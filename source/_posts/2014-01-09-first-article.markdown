@@ -10,3 +10,16 @@ this is my first article @ github by octopress
 
 * line1
 * line2
+* line3
+
+code test
+{{{
+	phpinfo();
+	echo 'this is code'
+}}}
+aa
+
+{% codeblock %}
+Awesome code snippet
+{% endcodeblock %}
+
