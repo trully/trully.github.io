@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-01-09T15:10:18+08:00</updated>
+  <updated>2014-01-11T11:34:35+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -23,7 +23,54 @@
 <ul>
 <li>line1</li>
 <li>line2</li>
+<li>line3</li>
 </ul>
+
+
+<p>code test</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>php test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">phpinfo</span><span class="p">();</span>
+</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>javascript test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">aa</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>html test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;userid&quot;</span> <span class="na">id=</span><span class="s">&quot;userid&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>java tset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">sun.java.util.*</span><span class="o">;</span>
+</span><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">ary</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;haha&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
