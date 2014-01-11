@@ -13,13 +13,28 @@ this is my first article @ github by octopress
 * line3
 
 code test
-{{{
-	phpinfo();
-	echo 'this is code'
-}}}
-aa
+```
+$ git clone git@github.com:imathis/octopress.git # fork octopress
+```
 
-{% codeblock %}
-Awesome code snippet
-{% endcodeblock %}
+``` php php test
+phpinfo();
+echo "test";
+```
 
+``` javascript javascript test
+alert('haha');
+var aa = "hello";
+```
+
+``` html html test
+<form action="">
+    <input type="text" name="userid" id="userid"/>
+</form>
+```
+
+``` java java tset
+import sun.java.util.*;
+String[] ary = null;
+System.out.println("haha");
+```
