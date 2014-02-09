@@ -4,13 +4,16 @@ title: "first article"
 date: 2014-01-09 15:03:44 +0800
 comments: true
 categories: 'test'
+tags: ['hello', 'github', 'octopress']
 ---
 
 this is my first article @ github by octopress
+你好
 
 * line1
 * line2
 * line3
+* line4
 
 code test
 ```
