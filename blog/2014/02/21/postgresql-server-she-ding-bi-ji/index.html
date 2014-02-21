@@ -5,22 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>用 GitHub 寫文章的步驟 - Life is Struggle</title>
+  <title>PostgreSQL Server 設定筆記 - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="log 位置 1
 2
-cd ~/apps/octopress
-rake new_post 會得到文章的檔名 再用 Mou 或 vi 編輯內容 1
-2
-3
-4
-5
-6
-7
-open -a Mou source/_posts/2014-01-09-first-article.markdown # or
-open &hellip;">
+/home/logs/pg/
+/net/home0/_vlog/logs/db/ 設定檔位置 1
+/net/pgsql/9.2.4/data/postgresql.conf 若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,7 +22,7 @@ open &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -77,7 +70,7 @@ open &hellip;">
   
   <header>
     
-      <h1 class="entry-title">用 GitHub 寫文章的步驟</h1>
+      <h1 class="entry-title">PostgreSQL Server 設定筆記</h1>
     
     
       <p class="meta">
@@ -93,88 +86,49 @@ open &hellip;">
   
 
 
-<time datetime="2014-02-21T14:06:26+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+<time datetime="2014-02-21T14:41:28+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><h4>log 位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
-</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/home/logs/pg/
+</span><span class='line'>/net/home0/_vlog/logs/db/</span></code></pre></td></tr></table></div></figure>
 
 
-<p>會得到文章的檔名
-<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AACXqFN5LnBd1p5IwMPK5pVOijZFSNykrH9KaA5g0pfEpg" alt="" /></p>
+<br/>
 
-<p>再用 Mou 或 vi 編輯內容</p>
+
+<h4>設定檔位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/net/pgsql/9.2.4/data/postgresql.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>log_statement = 'all' # none, ddl, mod, all</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>open -a Mou source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>open source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>vi source/_posts/2014-01-09-first-article.markdown
-</span><span class='line'># 可以打開 Mou 的說明頁參考 markdown 語法
-</span><span class='line'>open /Applications/Mou.app/Contents/Resources/help.md</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -1 is disabled, 0 logs all statements
+</span><span class='line'># and their durations, &gt; 0 logs only statements running at least 
+</span><span class='line'># this number of milliseconds
+</span><span class='line'>log_min_duration_statement = 3000</span></code></pre></td></tr></table></div></figure>
 
 
-<p>內容 sample</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: "first article"
-</span><span class='line'>date: 2014-01-09 15:03:44 +0800
-</span><span class='line'>comments: true
-</span><span class='line'>categories: 'Technical'
-</span><span class='line'>tags: ['github', 'octopress']
-</span><span class='line'>---
-</span><span class='line'>this is my first article @ github by octopress
-</span><span class='line'>* line1
-</span><span class='line'>* line2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>文章寫完後執行</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate # 沒做似乎也可以
-</span><span class='line'>rake preview # for local preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>沒問題的話就 push 到 github</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m "first article"
-</span><span class='line'>git push origin source
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>到線上看結果
-<a href="http://trully.github.io/">http://trully.github.io/</a></p>
+<p>ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
 </div>
 
 
@@ -197,12 +151,12 @@ open &hellip;">
   
 
 
-<time datetime="2014-02-21T14:06:26+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+<time datetime="2014-02-21T14:41:28+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/technical/'>Technical</a>
+    <a class='category' href='/blog/categories/database/'>Database</a>
   
 </span>
 
@@ -211,7 +165,7 @@ open &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/" data-via="" data-counturl="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/" data-via="" data-counturl="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/" >Tweet</a>
   
   
   
@@ -220,10 +174,10 @@ open &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/21/title/" title="Previous Post: 使用 Octopress 建立 Github blog">&laquo; 使用 Octopress 建立 Github blog</a>
+        <a class="basic-alignment left" href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/" title="Previous Post: 用 GitHub 寫文章的步驟">&laquo; 用 GitHub 寫文章的步驟</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/02/21/postgresql-server-she-ding-bi-ji/" title="Next Post: PostgreSQL server 設定筆記">PostgreSQL server 設定筆記 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/02/21/postgresql-sql-bi-ji/" title="Next Post: PostgreSQL sql 筆記">PostgreSQL sql 筆記 &raquo;</a>
       
     </p>
   </footer>

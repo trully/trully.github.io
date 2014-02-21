@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-21T14:17:48+08:00</updated>
+  <updated>2014-02-21T17:29:20+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,232 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Sql 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji/"/>
+    <updated>2014-02-21T14:48:32+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji</id>
+    <content type="html"><![CDATA[<h4>查看執行中 sql 的方法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>base64 encode 欄位 &ndash; encode()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">encode</span><span class="p">(</span><span class="n">convert_to</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="s1">&#39;base64&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">url</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>取 hd &ndash; &amp;</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">fmt</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span><span class="p">,</span> <span class="n">media_id</span><span class="p">,</span> <span class="n">title</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;238574878&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span> <span class="o">+</span> <span class="nb">interval</span> <span class="s1">&#39;1h&#39;</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">crt_datetime</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">mid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">ctime</span><span class="p">)</span> <span class="k">as</span> <span class="k">month</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="s1">&#39;2012-10-01 00:00:00&#39;</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="k">month</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="k">month</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AACyx2QDmYghr7eFTvEDF37Ja6MSIcBAoR20Y3Yysbdxuw" alt="" /></p>
+
+<br/>
+
+
+<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">uid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">last_upload_time</span><span class="p">)</span> <span class="k">as</span> <span class="n">total</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">member</span>
+</span><span class='line'> <span class="k">where</span> <span class="p">(</span><span class="n">audio_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">or</span> <span class="n">video_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">used_quota</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">total</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">total</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">media_id</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">mid</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span>
+</span><span class='line'>     <span class="k">select</span> <span class="k">min</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+</span><span class='line'>       <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'>      <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
+</span><span class='line'>        <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>        <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
+</span><span class='line'>      <span class="k">group</span> <span class="k">by</span> <span class="n">srcpath</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">replace</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;.flv&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp4&#39;</span><span class="p">)</span><span class="o">||</span><span class="n">row_number</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;.mp4&#39;</span> <span class="k">as</span> <span class="n">cmd</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;cb&#39;</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">title</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="k">on</span> <span class="p">(</span><span class="n">fieldname</span><span class="p">)</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablename</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">born_year</span><span class="p">,</span> <span class="n">born_date</span><span class="p">,</span> <span class="n">mobile</span><span class="p">,</span> <span class="k">zone</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">email</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">receipt_reg</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">mobile</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html">http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html</a></p>
+
+<br/>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Server 設定筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/"/>
+    <updated>2014-02-21T14:41:28+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji</id>
+    <content type="html"><![CDATA[<h4>log 位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/home/logs/pg/
+</span><span class='line'>/net/home0/_vlog/logs/db/</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>設定檔位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/net/pgsql/9.2.4/data/postgresql.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>log_statement = 'all' # none, ddl, mod, all</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -1 is disabled, 0 logs all statements
+</span><span class='line'># and their durations, &gt; 0 logs only statements running at least 
+</span><span class='line'># this number of milliseconds
+</span><span class='line'>log_min_duration_statement = 3000</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[用 GitHub 寫文章的步驟]]></title>
