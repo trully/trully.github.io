@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-09T16:35:12+08:00</updated>
+  <updated>2014-02-21T13:51:12+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,127 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Octopress 建立 Github Blog]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/title/"/>
+    <updated>2014-02-21T10:54:27+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/title</id>
+    <content type="html"><![CDATA[<h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
+</span><span class='line'>git --version
+</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h3>2. 安裝 Octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/trully/apps
+</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<p>此時的 branch 是 master
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.06.46.png?_subject_uid=33912440&amp;w=AABtD3TFmxcV-fESHUDvt-C9Y7AEB2Kgc_8YzXzbS0ljvA" alt="" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sduo gem install bundler
+</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h3>3. 在 GitHub 建立 repository</h3>
+
+<ol>
+<li>連到 <a href="https://github.com/new">https://github.com/new</a></li>
+<li>建立名為 trully.github.io 的 repository
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&amp;w=AABRwJo3W6Y_0nkBq8kMZB_hSqqVbasytCpRfDrfm_c9rw" alt="" /></li>
+</ol>
+
+
+<br/>
+
+
+<h3>4. 設定 Octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vi _config.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>先只改 <strong>Main Configs</strong> 的部份; 這裡的 url 要改成剛才建的 repository
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.16.57.png?_subject_uid=33912440&amp;w=AABOBQDio9z2ekm0lR7hfHNmmTSQtvGh4J14n-5w36d_Hg" alt="" /></p>
+
+<br/>
+
+
+<h3>5. deploy 到 GitHub</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>repository 輸入 : git@github.com:trully/trully.github.io.git<br/>
+成功的話, 此時的 branch 會變成 source, 可以下 git remote -v 看一下
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&amp;w=AABS_xY05BN8LheFb5pi8iy8jIQYFqIIovxiTh8N2T-Gsw" alt="" /><br/>
+這裡做<br/>
+1. 將 branch 從 master 切換到 source<br/>
+2. 建立 _deploy 目錄, 用來放 deploy 到 master branch 的內容 (client 這邊是 source, 但 push 到 github 的 master)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然後把 source commit 上去</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m 'initinal github blog'
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一切順利的話, 約十分鐘後連到 <a href="http://trully.github.io">http://trully.github.io</a> 會自到以下的畫面
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2015.02.57.png?_subject_uid=33912440&amp;w=AADORkBvhbG7Kin-q_mUv3hiTpQhjvf-UiTDmPgORWxs2Q" alt="" /></p>
+
+<p>若要在 client side 先 preview 可以下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然後打開 <a href="http://localhost:4000/">http://localhost:4000/</a></p>
+
+<br/>
+
+
+<h4>Reference</h4>
+
+<ul>
+<li><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/</a></li>
+<li><a href="http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/">http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/</a></li>
+<li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
+<li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First Article]]></title>
