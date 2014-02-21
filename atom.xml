@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-21T13:58:00+08:00</updated>
+  <updated>2014-02-21T14:17:48+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[用 GitHub 寫文章的步驟]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/"/>
+    <updated>2014-02-21T14:06:26+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
+</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
+
+
+<p>會得到文章的檔名
+<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AACXqFN5LnBd1p5IwMPK5pVOijZFSNykrH9KaA5g0pfEpg" alt="" /></p>
+
+<p>再用 Mou 或 vi 編輯內容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>open -a Mou source/_posts/2014-01-09-first-article.markdown 
+</span><span class='line'># or
+</span><span class='line'>open source/_posts/2014-01-09-first-article.markdown 
+</span><span class='line'># or
+</span><span class='line'>vi source/_posts/2014-01-09-first-article.markdown
+</span><span class='line'># 可以打開 Mou 的說明頁參考 markdown 語法
+</span><span class='line'>open /Applications/Mou.app/Contents/Resources/help.md</span></code></pre></td></tr></table></div></figure>
+
+
+<p>內容 sample</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>title: "first article"
+</span><span class='line'>date: 2014-01-09 15:03:44 +0800
+</span><span class='line'>comments: true
+</span><span class='line'>categories: 'Technical'
+</span><span class='line'>tags: ['github', 'octopress']
+</span><span class='line'>---
+</span><span class='line'>this is my first article @ github by octopress
+</span><span class='line'>* line1
+</span><span class='line'>* line2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>文章寫完後執行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate # 沒做似乎也可以
+</span><span class='line'>rake preview # for local preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>沒問題的話就 push 到 github</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m "first article"
+</span><span class='line'>git push origin source
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>到線上看結果
+<a href="http://trully.github.io/">http://trully.github.io/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 Octopress 建立 Github Blog]]></title>
