@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Test | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-02-09T16:35:12+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Article]]></title>
+    <link href="http://trully.github.io/blog/2014/01/09/first-article/"/>
+    <updated>2014-01-09T15:03:44+08:00</updated>
+    <id>http://trully.github.io/blog/2014/01/09/first-article</id>
+    <content type="html"><![CDATA[<p>this is my first article @ github by octopress
+你好</p>
+
+<ul>
+<li>line1</li>
+<li>line2</li>
+<li>line3</li>
+<li>line4</li>
+</ul>
+
+
+<p>code test
+<code>
+$ git clone git@github.com:imathis/octopress.git # fork octopress
+</code></p>
+
+<p><code>php php test
+phpinfo();
+echo "test";
+</code></p>
+
+<p><code>javascript javascript test
+alert('haha');
+var aa = "hello";
+</code></p>
+
+<p>``` html html test
+<form action=""></p>
+
+<pre><code>&lt;input type="text" name="userid" id="userid"/&gt;
+</code></pre>
+
+<p></form>
+```</p>
+
+<p><code>java java tset
+import sun.java.util.*;
+String[] ary = null;
+System.out.println("haha");
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
