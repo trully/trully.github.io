@@ -32,7 +32,7 @@ bundle install
 
 ### 3. 在 GitHub 建立 repository
 1. 連到 https://github.com/new
-2. 建立名為 trully.github.io 的 repository
+2. 建立名為 **trully.github.io** 的 repository
 ![](https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&w=AABRwJo3W6Y_0nkBq8kMZB_hSqqVbasytCpRfDrfm_c9rw)
 <br/>
 
@@ -48,8 +48,8 @@ vi _config.yml
 ```
 rake setup_github_pages
 ```
-repository 輸入 : git@github.com:trully/trully.github.io.git  
-成功的話, 此時的 branch 會變成 source, 可以下 git remote -v 看一下
+repository 輸入 : **git@github.com:trully/trully.github.io.git**
+成功的話, 此時的 branch 會變成 source, 可以下 **git remote -v** 看一下
 ![](https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&w=AABS_xY05BN8LheFb5pi8iy8jIQYFqIIovxiTh8N2T-Gsw)  
 這裡做  
 1. 將 branch 從 master 切換到 source  
