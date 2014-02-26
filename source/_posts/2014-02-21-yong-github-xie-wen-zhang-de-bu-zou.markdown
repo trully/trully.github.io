@@ -12,7 +12,7 @@ cd ~/apps/octopress
 rake new_post
 ```
 會得到文章的檔名
-![](https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&w=AACXqFN5LnBd1p5IwMPK5pVOijZFSNykrH9KaA5g0pfEpg)
+![](https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg)
 
 再用 Mou 或 vi 編輯內容
 ```

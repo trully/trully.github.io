@@ -46,7 +46,7 @@ select count(mid), date_trunc('month', ctime) as month
  group by month
  order by month
 ```
-![](https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&w=AACyx2QDmYghr7eFTvEDF37Ja6MSIcBAoR20Y3Yysbdxuw)
+![](https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&w=AABCHDNTIAy5NqY8eLmP0WESo2Ld6M1zwR1UdACGIjpPQQ)
 <br/>
 
 #### 依年份列出有在使用的人數 - date_trunc()
