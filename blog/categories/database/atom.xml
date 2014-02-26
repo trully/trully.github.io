@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Database | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-21T17:29:20+08:00</updated>
+  <updated>2014-02-27T07:50:19+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -70,7 +70,7 @@ select count(mid), date_trunc('month', ctime) as month
  group by month
  order by month
 </code>
-<img src="https://dl-web.dropbox.com/get/Screenshots/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AACyx2QDmYghr7eFTvEDF37Ja6MSIcBAoR20Y3Yysbdxuw" alt="" /></p>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AABCHDNTIAy5NqY8eLmP0WESo2Ld6M1zwR1UdACGIjpPQQ" alt="" /></p>
 
 <br/>
 
