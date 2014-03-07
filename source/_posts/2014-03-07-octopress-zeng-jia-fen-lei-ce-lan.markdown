@@ -11,6 +11,7 @@ categories: ['TECHNICAL', 'octopress']
 但發現在 rake preview 會有重覆噴 category log 的問題<br/>
 在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
 所以照著 https://github.com/tokkonopapa/octopress-tagcloud 的步驟來做
+<!--more-->
 
 #### 1. 到 https://github.com/tokkonopapa/octopress-tagcloud 將 tag_cloud.rb, category_list.html, tag_cloud.html 抓回來放到以下位置
 ![](https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-03-07%2011.41.34.png?_subject_uid=33912440&w=AACD02dzjmreFe3am05ZJuMpb3QeF9SKYT-kONYfZdKN-g)

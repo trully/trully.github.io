@@ -11,7 +11,7 @@ categories: ['DATABASE', 'pgsql']
 /home/logs/pg/
 /net/home0/_vlog/logs/db/
 ```
-<br/>
+<!--more--><br/>
 
 #### 設定檔位置
 ```

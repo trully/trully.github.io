@@ -18,7 +18,7 @@ select encode(convert_to(fname,'utf-8'), 'base64') as url
   from media
  where media_type in(1,2)
 ```
-<br/>
+<!--more--><br/>
 
 #### 取 hd - &
 ``` sql

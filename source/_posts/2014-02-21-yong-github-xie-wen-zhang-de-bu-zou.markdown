@@ -12,7 +12,7 @@ rake new_post
 ```
 會得到文章的檔名
 ![](https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg)
-
+<!--more-->
 再用 Mou 或 vi 編輯內容
 ```
 open -a Mou source/_posts/2014-01-09-first-article.markdown 
