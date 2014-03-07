@@ -3,8 +3,7 @@ layout: post
 title: "PostgreSQL server 設定筆記"
 date: 2014-02-21 14:41:28 +0800
 comments: true
-categories: 'Database'
-tags: ['pgsql']
+categories: ['DATABASE', 'pgsql']
 ---
 
 #### log 位置

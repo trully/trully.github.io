@@ -3,8 +3,7 @@ layout: post
 title: "PostgreSQL sql 筆記"
 date: 2014-02-21 14:48:32 +0800
 comments: true
-categories: 'Database'
-tags: ['pgsql', 'mysql']
+categories: ['DATABASE', 'pgsql', 'mysql']
 ---
 
 #### 查看執行中 sql 的方法

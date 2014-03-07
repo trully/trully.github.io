@@ -3,8 +3,7 @@ layout: post
 title: "用 GitHub 寫文章的步驟"
 date: 2014-02-21 14:06:26 +0800
 comments: true
-categories: Technical
-tags: ['github', 'octopress']
+categories: ['TECHNICAL', 'github', 'octopress']
 ---
 
 ```

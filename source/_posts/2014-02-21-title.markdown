@@ -3,8 +3,7 @@ layout: post
 title: "使用 Octopress 建立 Github blog"
 date: 2014-02-21 10:54:27 +0800
 comments: true
-categories: Technical
-tags: ['github', 'octopress']
+categories: ['TECHNICAL', 'github', 'octopress']
 ---
 
 ### 1. 安裝 git & ruby - 以下是我用的版本
