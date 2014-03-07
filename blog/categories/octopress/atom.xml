@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T12:00:19+08:00</updated>
+  <updated>2014-03-07T13:16:02+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -23,6 +23,9 @@
 <p>但發現在 rake preview 會有重覆噴 category log 的問題<br/>
 在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
 所以照著 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 的步驟來做</p>
+
+<!--more-->
+
 
 <h4>1. 到 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 將 tag_cloud.rb, category_list.html, tag_cloud.html 抓回來放到以下位置</h4>
 
@@ -63,6 +66,9 @@ rake new_post
 </code>
 會得到文章的檔名
 <img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
+
+<!--more-->
+
 
 <p>再用 Mou 或 vi 編輯內容
 ```
@@ -127,6 +133,9 @@ ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
 git --version
 git version 1.8.3.4 (Apple Git-47)
 </code></p>
+
+<!--more-->
+
 
 <br/>
 

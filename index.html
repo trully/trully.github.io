@@ -99,33 +99,12 @@
 在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
 所以照著 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 的步驟來做</p>
 
-<h4>1. 到 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 將 tag_cloud.rb, category_list.html, tag_cloud.html 抓回來放到以下位置</h4>
-
-<p><img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-03-07%2011.41.34.png?_subject_uid=33912440&amp;w=AACD02dzjmreFe3am05ZJuMpb3QeF9SKYT-kONYfZdKN-g" alt="" /></p>
-
-<br/>
-
-
-<h4>2. 修改 _config.yml 的 default_asides 設定</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [custom/asides/tag_cloud.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>3. 重新 rake generate 再 rake preview 即可看到結果~</h4>
-
-<br/>
-
-
-<h4>註: 若要調整 css, 可以到 sass/custom/_styles.scss</h4>
-
-<br/>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -180,161 +159,12 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<br/>
-
-
-<h4>取 hd &ndash; &amp;</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">fmt</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span><span class="p">,</span> <span class="n">media_id</span><span class="p">,</span> <span class="n">title</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
-</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;238574878&#39;</span>
-</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;Wretch&#39;</span>
-</span><span class='line'>   <span class="k">and</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span> <span class="o">+</span> <span class="nb">interval</span> <span class="s1">&#39;1h&#39;</span>
-</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">crt_datetime</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">mid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">ctime</span><span class="p">)</span> <span class="k">as</span> <span class="k">month</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
-</span><span class='line'> <span class="k">where</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="s1">&#39;2012-10-01 00:00:00&#39;</span>
-</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="k">month</span>
-</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="k">month</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AABCHDNTIAy5NqY8eLmP0WESo2Ld6M1zwR1UdACGIjpPQQ" alt="" /></p>
-
-<br/>
-
-
-<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">uid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">last_upload_time</span><span class="p">)</span> <span class="k">as</span> <span class="n">total</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">member</span>
-</span><span class='line'> <span class="k">where</span> <span class="p">(</span><span class="n">audio_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">or</span> <span class="n">video_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>   <span class="k">and</span> <span class="n">used_quota</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">total</span>
-</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">total</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">media_id</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
-</span><span class='line'> <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
-</span><span class='line'>   <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>   <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
-</span><span class='line'>   <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
-</span><span class='line'>   <span class="k">and</span> <span class="n">mid</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span>
-</span><span class='line'>     <span class="k">select</span> <span class="k">min</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
-</span><span class='line'>       <span class="k">from</span> <span class="n">media</span>
-</span><span class='line'>      <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
-</span><span class='line'>        <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
-</span><span class='line'>        <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
-</span><span class='line'>      <span class="k">group</span> <span class="k">by</span> <span class="n">srcpath</span>
-</span><span class='line'><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">replace</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;.flv&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp4&#39;</span><span class="p">)</span><span class="o">||</span><span class="n">row_number</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;.mp4&#39;</span> <span class="k">as</span> <span class="n">cmd</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
-</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
-</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;cb&#39;</span>
-</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">title</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="k">on</span> <span class="p">(</span><span class="n">fieldname</span><span class="p">)</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablename</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">born_year</span><span class="p">,</span> <span class="n">born_date</span><span class="p">,</span> <span class="n">mobile</span><span class="p">,</span> <span class="k">zone</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">email</span>
-</span><span class='line'>  <span class="k">from</span> <span class="n">receipt_reg</span>
-</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">mobile</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html">http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html</a></p>
-
-<br/>
-
-
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/postgresql-sql-bi-ji/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -376,36 +206,12 @@
 </span><span class='line'>/net/home0/_vlog/logs/db/</span></code></pre></td></tr></table></div></figure>
 
 
-<br/>
-
-
-<h4>設定檔位置</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/net/pgsql/9.2.4/data/postgresql.conf</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>log_statement = 'all' # none, ddl, mod, all</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># -1 is disabled, 0 logs all statements
-</span><span class='line'># and their durations, &gt; 0 logs only statements running at least 
-</span><span class='line'># this number of milliseconds
-</span><span class='line'>log_min_duration_statement = 3000</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/postgresql-server-she-ding-bi-ji/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -448,74 +254,12 @@
 <p>會得到文章的檔名
 <img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
 
-<p>再用 Mou 或 vi 編輯內容</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>open -a Mou source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>open source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>vi source/_posts/2014-01-09-first-article.markdown
-</span><span class='line'># 可以打開 Mou 的說明頁參考 markdown 語法
-</span><span class='line'>open /Applications/Mou.app/Contents/Resources/help.md</span></code></pre></td></tr></table></div></figure>
-
-
-<p>內容 sample</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: "first article"
-</span><span class='line'>date: 2014-01-09 15:03:44 +0800
-</span><span class='line'>comments: true
-</span><span class='line'>categories: 'Technical'
-</span><span class='line'>tags: ['github', 'octopress']
-</span><span class='line'>---
-</span><span class='line'>this is my first article @ github by octopress
-</span><span class='line'>* line1
-</span><span class='line'>* line2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>文章寫完後執行</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate # 沒做似乎也可以
-</span><span class='line'>rake preview # for local preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>沒問題的話就 push 到 github</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m "first article"
-</span><span class='line'>git push origin source
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>到線上看結果
-<a href="http://trully.github.io/">http://trully.github.io/</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -561,215 +305,20 @@
 </span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
 
 
-<br/>
-
-
-<h3>2. 安裝 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/trully/apps
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
-
-
-<p>此時的 branch 是 master
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.06.46.png?_subject_uid=33912440&amp;w=AACAf1-mUPcA5dU-VP7AKL2QFqv3mPwAs-DSkVcN3AvSdA" alt="" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sduo gem install bundler
-</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h3>3. 在 GitHub 建立 repository</h3>
-
-<ol>
-<li>連到 <a href="https://github.com/new">https://github.com/new</a></li>
-<li>建立名為 <strong>trully.github.io</strong> 的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&amp;w=AADHEPkwrct4AZ7PITVbVHGOmc-RUlgdN3U3z8tz11vYpw" alt="" /></li>
-</ol>
-
-
-<br/>
-
-
-<h3>4. 設定 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vi _config.yml</span></code></pre></td></tr></table></div></figure>
-
-
-<p>先只改 <strong>Main Configs</strong> 的部份; 這裡的 url 要改成剛才建的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.16.57.png?_subject_uid=33912440&amp;w=AABfELhGqDYucduD-oZYFGr_A9cThUa_BD3Qib1hmB6W6w" alt="" /></p>
-
-<br/>
-
-
-<h3>5. deploy 到 GitHub</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>repository 輸入 : <strong>git@github.com:trully/trully.github.io.git</strong>
-成功的話, 此時的 branch 會變成 source, 可以下 <strong>git remote -v</strong> 看一下
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&amp;w=AABptXJVNhNi8zUG2aBug8zs0AlrEO2qIs6svDmhaXEhpg" alt="" /><br/>
-這裡做<br/>
-1. 將 branch 從 master 切換到 source<br/>
-2. 建立 _deploy 目錄, 用來放 deploy 到 master branch 的內容 (client 這邊是 source, 但 push 到 github 的 master)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然後把 source commit 上去</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m 'initinal github blog'
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
-
-
-<p>一切順利的話, 約十分鐘後連到 <a href="http://trully.github.io">http://trully.github.io</a> 會自到以下的畫面
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.02.57.png?_subject_uid=33912440&amp;w=AAArMN71AoovTt9Yh8JHthSQl0xw-d0BuFoI8QaslYZNtw" alt="" /></p>
-
-<p>若要在 client side 先 preview 可以下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然後打開 <a href="http://localhost:4000/">http://localhost:4000/</a></p>
-
-<br/>
-
-
-<h4>Reference</h4>
-
-<ul>
-<li><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/</a></li>
-<li><a href="http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/">http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/</a></li>
-<li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
-<li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
-</ul>
-
 </div>
   
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/09/first-article/">First Article</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-09T15:03:44+08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>this is my first article @ github by octopress
-你好</p>
-
-<ul>
-<li>line1</li>
-<li>line2</li>
-<li>line3</li>
-<li>line4</li>
-</ul>
-
-
-<p>code test</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>php test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">phpinfo</span><span class="p">();</span>
-</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>javascript test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">aa</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>html test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;userid&quot;</span> <span class="na">id=</span><span class="s">&quot;userid&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>java tset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">sun.java.util.*</span><span class="o">;</span>
-</span><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">ary</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;haha&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/title/">Read on &rarr;</a>
+    </footer>
   
 
 
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -805,6 +354,10 @@
     
       <li class="post">
         <a href="/blog/2014/02/21/title/">使用 Octopress 建立 Github Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/09/first-article/">First Article</a>
       </li>
     
   </ul>

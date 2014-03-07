@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mysql | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T12:00:19+08:00</updated>
+  <updated>2014-03-07T13:16:02+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -34,6 +34,9 @@ select encode(convert_to(fname,'utf-8'), 'base64') as url
   from media
  where media_type in(1,2)
 </code></p>
+
+<!--more-->
+
 
 <br/>
 
