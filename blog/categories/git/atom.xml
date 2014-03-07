@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T17:22:55+08:00</updated>
+  <updated>2014-03-07T19:47:00+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -98,6 +98,27 @@ git config --global core.editor /usr/bin/vim
 <p>ref : <br>
 <a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
 <a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
+
+<br>
+
+
+
+
+<hr>
+
+
+<p><strong>2014-03-07 後記</strong> : 以下先 memo 起來, 下次改 java 可試(有試過一次, 但結果有點怪)</p>
+
+<p>還沒 push 前, 不想產生太多 commit, 可以用 rebase -i 進行編修, 順便合併或 reword 一些 commit
+<code>
+git rebase -i 05b56946e523affc26e548482e5c909460e7fe6e (sha code)
+</code>
+若失敗, 執行
+<code>
+git reset --hard HEAD
+git checkout master
+</code>
+ref : <a href="http://blog.yorkxin.org/posts/2011/07/29/git-rebase">http://blog.yorkxin.org/posts/2011/07/29/git-rebase</a></p>
 ]]></content>
   </entry>
   

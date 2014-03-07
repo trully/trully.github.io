@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DATABASE | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T17:22:55+08:00</updated>
+  <updated>2014-03-07T19:47:00+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -149,7 +149,13 @@ ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-
 <br/>
 
 
+<h4>mysql 的 rownum</h4>
 
+<p><code>sql
+select distinct mobile, @rownum:=@rownum+1 AS 'rownum', name, sex, born_year, born_date, mobile, zone, addr, email
+  from receipt_reg, (SELECT @rownum:=0) r
+</code>
+ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
 ]]></content>
   </entry>
   

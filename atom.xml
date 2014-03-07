@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T17:22:55+08:00</updated>
+  <updated>2014-03-07T19:47:00+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Php 匯出 Csv 轉成 Big5 編碼]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/"/>
+    <updated>2014-03-07T17:48:21+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma</id>
+    <content type="html"><![CDATA[<p>重點: fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5//IGNORE&rsquo;, $line));</p>
+
+<!-- more -->
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">編號</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">姓名</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">性別</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">出生年</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">出生月日</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">聯絡電話</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">郵遞區號 縣市</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">地址</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">E-Mail</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">白色沙瓦</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">蘋果</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">白桃</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">葡萄沙瓦</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">蜂蜜檸檬</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">檸檬薑汁</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">冬橘</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">通路</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">發票號碼</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">填寫時間</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="o">.</span><span class="nb">chr</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+</span><span class='line'><span class="c1"># 寫檔</span>
+</span><span class='line'><span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">iconv</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG5&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$result</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$no</span>         <span class="o">=</span> <span class="nv">$cnt</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$name</span>       <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$sex</span>        <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$bornYear</span>   <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;bornYear&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$bornDate</span>   <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;bornDate&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$mobile</span>     <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;mobile&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$drink0</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink0&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;白色沙瓦&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink1</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;蘋果&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink2</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;白桃&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink3</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;葡萄沙瓦&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink4</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink4&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;蜂蜜檸檬&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink5</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink5&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;檸檬薑汁&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink6</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink6&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;冬橘&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># 要用 \&quot; 跳脫一下特殊符號</span>
+</span><span class='line'>    <span class="nv">$line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">$no</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$name</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$sex</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$bornYear</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$bornDate</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$mobile</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$zone</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$addr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$email</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink1</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink2</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink3</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink4</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink5</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink6</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$channel</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$receiptNo</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$ctime</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="o">.</span><span class="nb">chr</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1"># 將 utf-8 轉換為 big5, 沒辦法, 因為是 ms 的東西</span>
+</span><span class='line'>    <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">iconv</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG5//IGNORE&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">));</span>
+</span><span class='line'>    <span class="nv">$cnt</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Php 程式裡看 Server 的 Error Log]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log/"/>
+    <updated>2014-03-07T17:44:10+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log</id>
+    <content type="html"><![CDATA[<p>在程式最前面加這二行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;display_errors&#39;</span><span class="p">,</span> <span class="s1">&#39;On&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ERROR</span> <span class="o">|</span> <span class="k">E_WARNING</span> <span class="o">|</span> <span class="k">E_PARSE</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法]]></title>
@@ -154,6 +241,32 @@
 <p>ref : <br>
 <a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
 <a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
+
+<br>
+
+
+
+
+<hr>
+
+
+<p><strong>2014-03-07 後記</strong> : 以下先 memo 起來, 下次改 java 可試(有試過一次, 但結果有點怪)</p>
+
+<p>還沒 push 前, 不想產生太多 commit, 可以用 rebase -i 進行編修, 順便合併或 reword 一些 commit</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git rebase -i 05b56946e523affc26e548482e5c909460e7fe6e (sha code)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>若失敗, 執行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git reset --hard HEAD
+</span><span class='line'>git checkout master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://blog.yorkxin.org/posts/2011/07/29/git-rebase">http://blog.yorkxin.org/posts/2011/07/29/git-rebase</a></p>
 ]]></content>
   </entry>
   
@@ -380,7 +493,16 @@
 <br/>
 
 
+<h4>mysql 的 rownum</h4>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="n">mobile</span><span class="p">,</span> <span class="o">@</span><span class="n">rownum</span><span class="p">:</span><span class="o">=@</span><span class="n">rownum</span><span class="o">+</span><span class="mi">1</span> <span class="k">AS</span> <span class="s1">&#39;rownum&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">born_year</span><span class="p">,</span> <span class="n">born_date</span><span class="p">,</span> <span class="n">mobile</span><span class="p">,</span> <span class="k">zone</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">email</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">receipt_reg</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="o">@</span><span class="n">rownum</span><span class="p">:</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="n">r</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
 ]]></content>
   </entry>
   
