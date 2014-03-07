@@ -41,3 +41,7 @@ import sun.java.util.*;
 String[] ary = null;
 System.out.println("haha");
 ```
+
+{% codeblock lang:objc %}
+[rectangle setX: 10 y: 10 width: 20 height: 20];
+{% endcodeblock %}
