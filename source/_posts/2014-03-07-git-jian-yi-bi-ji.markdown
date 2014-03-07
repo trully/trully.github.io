@@ -73,3 +73,18 @@ git config --global core.editor /usr/bin/vim
 ref : <br>
 http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/
 http://ihower.tw/blog/archives/2591
+<br>
+
+<hr>
+**2014-03-07 後記** : 以下先 memo 起來, 下次改 java 可試(有試過一次, 但結果有點怪)
+
+還沒 push 前, 不想產生太多 commit, 可以用 rebase -i 進行編修, 順便合併或 reword 一些 commit
+```
+git rebase -i 05b56946e523affc26e548482e5c909460e7fe6e (sha code)
+```
+若失敗, 執行
+```
+git reset --hard HEAD
+git checkout master
+```
+ref : http://blog.yorkxin.org/posts/2011/07/29/git-rebase

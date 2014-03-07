@@ -102,3 +102,9 @@ select name, sex, born_year, born_date, mobile, zone, addr, email
 ref : http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html
 <br/>
 
+#### mysql 的 rownum
+``` sql
+select distinct mobile, @rownum:=@rownum+1 AS 'rownum', name, sex, born_year, born_date, mobile, zone, addr, email 
+  from receipt_reg, (SELECT @rownum:=0) r
+```
+ref : http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq
