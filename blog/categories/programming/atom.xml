@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PROGRAMMING | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-07T17:22:55+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/"/>
+    <updated>2014-03-07T17:16:37+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa</id>
+    <content type="html"><![CDATA[<p>有以下二個方法</p>
+
+<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
+
+<h4>2.或在 code 裡宣告</h4>
+
+<p><code>php
+set_time_limit(int $seconds) # If set to zero, no time limit is imposed
+</code></p>
+
+<br>
+
+
+<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git 簡易筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji/"/>
+    <updated>2014-03-07T16:31:03+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji</id>
+    <content type="html"><![CDATA[<h3>環境設定</h3>
+
+<p><code>
+git config user.name trully
+git config user.email username@email.com
+git config --global user.name "trully"
+git config --global user.email "username@email.com"
+git config --global color.diff auto # git diff 要顯示顏色
+git config --global color.status auto # git status 要顯示顏色
+git config --global color.branch auto
+git config --global color.log auto # git log --graph 會很漂亮
+cat .git/config
+</code></p>
+
+<!-- more -->
+
+
+<h3>常用指令</h3>
+
+<p>```
+git clone git@trac.team.xuite.net:vlog/php.git HiNet_Vlog
+git clone git@trac.team.xuite.net:vlog/java.git VlogJMSConsumer</p>
+
+<p>git status # 或 gst
+git diff # 或 gd
+git log
+git add [code path]
+git commit # commit add 的 code
+git push # push 回 resp</p>
+
+<p>git remote -v</p>
+
+<h1>回復未 commit 的變更 (同 svn revert)</h1>
+
+<p>git checkout [codepath]</p>
+
+<h1>還原已 commit 的檔案</h1>
+
+<p>git revert 18ead0a60740a74fd568dd885dda3b6836e582dc</p>
+
+<h1>與 trac mapping link 的方式</h1>
+
+<p>changeset:1072fa5/vlog/php
+```</p>
+
+<h3>尋找已 git rm 的 code</h3>
+
+<p>```
+git log &mdash;name-status</p>
+
+<h1>ex: 尋找 dir 或 file</h1>
+
+<p>git log &mdash;name-status net/xuite/jms/consumer
+git log &mdash;name-status net/xuite/jms/consumer/EncodeAudio.java</p>
+
+<h1>ex: 把 m4a 關鍵字的前後 5 行都列出來看</h1>
+
+<p>git log &mdash;name-status | grep -A 5 -B 5 m4a
+```</p>
+
+<h3>要忽略的 code list, 寫在 .gitignore 裡</h3>
+
+<p><code>
+cat ./.gitignore
+/scripts/log
+/scripts/patch
+/backend/template/compile
+</code></p>
+
+<p>若用 vi 輸入 comment, 會出現 error: There was a problem with the editor &lsquo;vi&rsquo;. Please supply the message using either -m or -F option. 的錯誤, 解法如下(未測)
+<code>
+git config --global core.editor /usr/bin/vim
+</code></p>
+
+<br>
+
+
+<p>ref : <br>
+<a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
+<a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
+]]></content>
+  </entry>
+  
+</feed>

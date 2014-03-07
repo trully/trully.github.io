@@ -5,18 +5,23 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用 Octopress 建立 Github Blog - Life is Struggle</title>
+  <title>Git 簡易筆記 - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="1. 安裝 git &amp; ruby &ndash; 以下是我用的版本 1
+  <meta name="description" content="環境設定 1
 2
 3
 4
-ruby --version
-ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
-git --version
-git &hellip;">
+5
+6
+7
+8
+9
+git config user.name trully
+git config user.email username@email.com
+git config --global user.name "trully"
+git config -- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +30,7 @@ git &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io/blog/2014/02/21/title">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -73,7 +78,7 @@ git &hellip;">
   
   <header>
     
-      <h1 class="entry-title">使用 Octopress 建立 Github Blog</h1>
+      <h1 class="entry-title">Git 簡易筆記</h1>
     
     
       <p class="meta">
@@ -89,129 +94,126 @@ git &hellip;">
   
 
 
-<time datetime="2014-02-21T10:54:27+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+<time datetime="2014-03-07T16:31:03+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
+<div class="entry-content"><h3>環境設定</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
-</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
-</span><span class='line'>git --version
-</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config user.name trully
+</span><span class='line'>git config user.email username@email.com
+</span><span class='line'>git config --global user.name "trully"
+</span><span class='line'>git config --global user.email "username@email.com"
+</span><span class='line'>git config --global color.diff auto # git diff 要顯示顏色
+</span><span class='line'>git config --global color.status auto # git status 要顯示顏色
+</span><span class='line'>git config --global color.branch auto
+</span><span class='line'>git config --global color.log auto # git log --graph 會很漂亮
+</span><span class='line'>cat .git/config</span></code></pre></td></tr></table></div></figure>
 
 
-<!--more-->
+<!-- more -->
 
 
-<br/>
-
-
-<h3>2. 安裝 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/trully/apps
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
-
-
-<p>此時的 branch 是 master
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.06.46.png?_subject_uid=33912440&amp;w=AACAf1-mUPcA5dU-VP7AKL2QFqv3mPwAs-DSkVcN3AvSdA" alt="" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sduo gem install bundler
-</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h3>3. 在 GitHub 建立 repository</h3>
-
-<ol>
-<li>連到 <a href="https://github.com/new">https://github.com/new</a></li>
-<li>建立名為 <strong>trully.github.io</strong> 的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&amp;w=AADHEPkwrct4AZ7PITVbVHGOmc-RUlgdN3U3z8tz11vYpw" alt="" /></li>
-</ol>
-
-
-<br/>
-
-
-<h3>4. 設定 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vi _config.yml</span></code></pre></td></tr></table></div></figure>
-
-
-<p>先只改 <strong>Main Configs</strong> 的部份; 這裡的 url 要改成剛才建的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.16.57.png?_subject_uid=33912440&amp;w=AABfELhGqDYucduD-oZYFGr_A9cThUa_BD3Qib1hmB6W6w" alt="" /></p>
-
-<br/>
-
-
-<h3>5. deploy 到 GitHub</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>repository 輸入 : <strong>git@github.com:trully/trully.github.io.git</strong>
-成功的話, 此時的 branch 會變成 source, 可以下 <strong>git remote -v</strong> 看一下
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&amp;w=AABptXJVNhNi8zUG2aBug8zs0AlrEO2qIs6svDmhaXEhpg" alt="" /><br/>
-這裡做<br/>
-1. 將 branch 從 master 切換到 source<br/>
-2. 建立 _deploy 目錄, 用來放 deploy 到 master branch 的內容 (client 這邊是 source, 但 push 到 github 的 master)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然後把 source commit 上去</p>
+<h3>常用指令</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m 'initinal github blog'
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@trac.team.xuite.net:vlog/php.git HiNet_Vlog
+</span><span class='line'>git clone git@trac.team.xuite.net:vlog/java.git VlogJMSConsumer
+</span><span class='line'>
+</span><span class='line'>git status # 或 gst
+</span><span class='line'>git diff # 或 gd
+</span><span class='line'>git log
+</span><span class='line'>git add [code path]
+</span><span class='line'>git commit # commit add 的 code
+</span><span class='line'>git push # push 回 resp
+</span><span class='line'>
+</span><span class='line'>git remote -v
+</span><span class='line'>
+</span><span class='line'># 回復未 commit 的變更 (同 svn revert)
+</span><span class='line'>git checkout [codepath]
+</span><span class='line'>
+</span><span class='line'># 還原已 commit 的檔案
+</span><span class='line'>git revert 18ead0a60740a74fd568dd885dda3b6836e582dc 
+</span><span class='line'>
+</span><span class='line'># 與 trac mapping link 的方式
+</span><span class='line'>changeset:1072fa5/vlog/php </span></code></pre></td></tr></table></div></figure>
 
 
-<p>一切順利的話, 約十分鐘後連到 <a href="http://trully.github.io">http://trully.github.io</a> 會自到以下的畫面
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.02.57.png?_subject_uid=33912440&amp;w=AAArMN71AoovTt9Yh8JHthSQl0xw-d0BuFoI8QaslYZNtw" alt="" /></p>
-
-<p>若要在 client side 先 preview 可以下</p>
+<h3>尋找已 git rm 的 code</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git log --name-status
+</span><span class='line'>
+</span><span class='line'># ex: 尋找 dir 或 file
+</span><span class='line'>git log --name-status net/xuite/jms/consumer
+</span><span class='line'>git log --name-status net/xuite/jms/consumer/EncodeAudio.java
+</span><span class='line'>
+</span><span class='line'># ex: 把 m4a 關鍵字的前後 5 行都列出來看
+</span><span class='line'>git log --name-status | grep -A 5 -B 5 m4a</span></code></pre></td></tr></table></div></figure>
 
 
-<p>然後打開 <a href="http://localhost:4000/">http://localhost:4000/</a></p>
+<h3>要忽略的 code list, 寫在 .gitignore 裡</h3>
 
-<br/>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat ./.gitignore
+</span><span class='line'>/scripts/log
+</span><span class='line'>/scripts/patch
+</span><span class='line'>/backend/template/compile</span></code></pre></td></tr></table></div></figure>
 
 
-<h4>Reference</h4>
+<p>若用 vi 輸入 comment, 會出現 error: There was a problem with the editor &lsquo;vi&rsquo;. Please supply the message using either -m or -F option. 的錯誤, 解法如下(未測)</p>
 
-<ul>
-<li><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/</a></li>
-<li><a href="http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/">http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/</a></li>
-<li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
-<li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global core.editor /usr/bin/vim</span></code></pre></td></tr></table></div></figure>
 
+
+<br>
+
+
+<p>ref : <br>
+<a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
+<a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
 </div>
 
 
@@ -234,12 +236,12 @@ git &hellip;">
   
 
 
-<time datetime="2014-02-21T10:54:27+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+<time datetime="2014-03-07T16:31:03+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/technical/'>TECHNICAL</a>, <a class='category' href='/blog/categories/github/'>github</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/programming/'>PROGRAMMING</a>, <a class='category' href='/blog/categories/git/'>git</a>
   
 </span>
 
@@ -255,10 +257,10 @@ git &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/01/09/first-article/" title="Previous Post: first article">&laquo; first article</a>
+        <a class="basic-alignment left" href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/" title="Previous Post: Octopress 增加分類側欄">&laquo; Octopress 增加分類側欄</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/" title="Next Post: 用 GitHub 寫文章的步驟">用 GitHub 寫文章的步驟 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/" title="Next Post: php 出現 Maximum execution time of 30 seconds exceeded 的解法">php 出現 Maximum execution time of 30 seconds exceeded 的解法 &raquo;</a>
       
     </p>
   </footer>

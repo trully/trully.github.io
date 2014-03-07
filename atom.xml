@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-03-07T13:16:02+08:00</updated>
+  <updated>2014-03-07T17:22:55+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,150 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/"/>
+    <updated>2014-03-07T17:16:37+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa</id>
+    <content type="html"><![CDATA[<p>有以下二個方法</p>
+
+<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
+
+<h4>2.或在 code 裡宣告</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">set_time_limit</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$seconds</span><span class="p">)</span> <span class="c1"># If set to zero, no time limit is imposed</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git 簡易筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji/"/>
+    <updated>2014-03-07T16:31:03+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji</id>
+    <content type="html"><![CDATA[<h3>環境設定</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config user.name trully
+</span><span class='line'>git config user.email username@email.com
+</span><span class='line'>git config --global user.name "trully"
+</span><span class='line'>git config --global user.email "username@email.com"
+</span><span class='line'>git config --global color.diff auto # git diff 要顯示顏色
+</span><span class='line'>git config --global color.status auto # git status 要顯示顏色
+</span><span class='line'>git config --global color.branch auto
+</span><span class='line'>git config --global color.log auto # git log --graph 會很漂亮
+</span><span class='line'>cat .git/config</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<h3>常用指令</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@trac.team.xuite.net:vlog/php.git HiNet_Vlog
+</span><span class='line'>git clone git@trac.team.xuite.net:vlog/java.git VlogJMSConsumer
+</span><span class='line'>
+</span><span class='line'>git status # 或 gst
+</span><span class='line'>git diff # 或 gd
+</span><span class='line'>git log
+</span><span class='line'>git add [code path]
+</span><span class='line'>git commit # commit add 的 code
+</span><span class='line'>git push # push 回 resp
+</span><span class='line'>
+</span><span class='line'>git remote -v
+</span><span class='line'>
+</span><span class='line'># 回復未 commit 的變更 (同 svn revert)
+</span><span class='line'>git checkout [codepath]
+</span><span class='line'>
+</span><span class='line'># 還原已 commit 的檔案
+</span><span class='line'>git revert 18ead0a60740a74fd568dd885dda3b6836e582dc 
+</span><span class='line'>
+</span><span class='line'># 與 trac mapping link 的方式
+</span><span class='line'>changeset:1072fa5/vlog/php </span></code></pre></td></tr></table></div></figure>
+
+
+<h3>尋找已 git rm 的 code</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git log --name-status
+</span><span class='line'>
+</span><span class='line'># ex: 尋找 dir 或 file
+</span><span class='line'>git log --name-status net/xuite/jms/consumer
+</span><span class='line'>git log --name-status net/xuite/jms/consumer/EncodeAudio.java
+</span><span class='line'>
+</span><span class='line'># ex: 把 m4a 關鍵字的前後 5 行都列出來看
+</span><span class='line'>git log --name-status | grep -A 5 -B 5 m4a</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>要忽略的 code list, 寫在 .gitignore 裡</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat ./.gitignore
+</span><span class='line'>/scripts/log
+</span><span class='line'>/scripts/patch
+</span><span class='line'>/backend/template/compile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>若用 vi 輸入 comment, 會出現 error: There was a problem with the editor &lsquo;vi&rsquo;. Please supply the message using either -m or -F option. 的錯誤, 解法如下(未測)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global core.editor /usr/bin/vim</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>ref : <br>
+<a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
+<a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 增加分類側欄]]></title>
