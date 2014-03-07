@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: DATABASE | Life is Struggle]]></title>
-  <link href="http://trully.github.io/blog/categories/database/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Mysql | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
   <updated>2014-03-07T11:29:11+08:00</updated>
   <id>http://trully.github.io/</id>
@@ -147,49 +147,6 @@ ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[PostgreSQL Server 設定筆記]]></title>
-    <link href="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/"/>
-    <updated>2014-02-21T14:41:28+08:00</updated>
-    <id>http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji</id>
-    <content type="html"><![CDATA[<h4>log 位置</h4>
-
-<p><code>
-/home/logs/pg/
-/net/home0/_vlog/logs/db/
-</code></p>
-
-<br/>
-
-
-<h4>設定檔位置</h4>
-
-<p><code>
-/net/pgsql/9.2.4/data/postgresql.conf
-</code></p>
-
-<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
-
-<p><code>
-log_statement = 'all' # none, ddl, mod, all
-</code></p>
-
-<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
-
-<p>```</p>
-
-<h1>-1 is disabled, 0 logs all statements</h1>
-
-<h1>and their durations, > 0 logs only statements running at least</h1>
-
-<h1>this number of milliseconds</h1>
-
-<p>log_min_duration_statement = 3000
-```
-ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
 ]]></content>
   </entry>
   
