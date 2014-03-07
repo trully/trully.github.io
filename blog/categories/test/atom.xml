@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Test | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/test/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-27T07:50:19+08:00</updated>
+  <updated>2014-03-07T09:56:49+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -58,6 +58,10 @@ import sun.java.util.*;
 String[] ary = null;
 System.out.println("haha");
 </code></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
