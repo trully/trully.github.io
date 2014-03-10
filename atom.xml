@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-02-09T16:35:12+08:00</updated>
+  <updated>2014-03-07T19:47:00+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,756 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Php 匯出 Csv 轉成 Big5 編碼]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/"/>
+    <updated>2014-03-07T17:48:21+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma</id>
+    <content type="html"><![CDATA[<p>重點: fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5//IGNORE&rsquo;, $line));</p>
+
+<!-- more -->
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">編號</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">姓名</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">性別</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">出生年</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">出生月日</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">聯絡電話</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">郵遞區號 縣市</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">地址</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">E-Mail</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">白色沙瓦</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">蘋果</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">白桃</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">葡萄沙瓦</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">蜂蜜檸檬</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">檸檬薑汁</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">冬橘</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">通路</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">發票號碼</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">填寫時間</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="o">.</span><span class="nb">chr</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+</span><span class='line'><span class="c1"># 寫檔</span>
+</span><span class='line'><span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">iconv</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG5&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="nv">$result</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$no</span>         <span class="o">=</span> <span class="nv">$cnt</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$name</span>       <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$sex</span>        <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$bornYear</span>   <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;bornYear&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$bornDate</span>   <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;bornDate&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$mobile</span>     <span class="o">=</span> <span class="nv">$util</span><span class="o">-&gt;</span><span class="na">readFromDB</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;mobile&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="nv">$drink0</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink0&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;白色沙瓦&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink1</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;蘋果&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink2</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;白桃&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink3</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;葡萄沙瓦&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink4</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink4&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;蜂蜜檸檬&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink5</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink5&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;檸檬薑汁&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$drink6</span>     <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;drink6&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;冬橘&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># 要用 \&quot; 跳脫一下特殊符號</span>
+</span><span class='line'>    <span class="nv">$line</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="si">$no</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$name</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$sex</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$bornYear</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$bornDate</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$mobile</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$zone</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$addr</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$email</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink0</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink1</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink2</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink3</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink4</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink5</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$drink6</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$channel</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$receiptNo</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="si">$ctime</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="o">.</span><span class="nb">chr</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1"># 將 utf-8 轉換為 big5, 沒辦法, 因為是 ms 的東西</span>
+</span><span class='line'>    <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">iconv</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;BIG5//IGNORE&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">));</span>
+</span><span class='line'>    <span class="nv">$cnt</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Php 程式裡看 Server 的 Error Log]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log/"/>
+    <updated>2014-03-07T17:44:10+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log</id>
+    <content type="html"><![CDATA[<p>在程式最前面加這二行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;display_errors&#39;</span><span class="p">,</span> <span class="s1">&#39;On&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ERROR</span> <span class="o">|</span> <span class="k">E_WARNING</span> <span class="o">|</span> <span class="k">E_PARSE</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/"/>
+    <updated>2014-03-07T17:16:37+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa</id>
+    <content type="html"><![CDATA[<p>有以下二個方法</p>
+
+<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
+
+<h4>2.或在 code 裡宣告</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">set_time_limit</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$seconds</span><span class="p">)</span> <span class="c1"># If set to zero, no time limit is imposed</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git 簡易筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji/"/>
+    <updated>2014-03-07T16:31:03+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/git-jian-yi-bi-ji</id>
+    <content type="html"><![CDATA[<h3>環境設定</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config user.name trully
+</span><span class='line'>git config user.email username@email.com
+</span><span class='line'>git config --global user.name "trully"
+</span><span class='line'>git config --global user.email "username@email.com"
+</span><span class='line'>git config --global color.diff auto # git diff 要顯示顏色
+</span><span class='line'>git config --global color.status auto # git status 要顯示顏色
+</span><span class='line'>git config --global color.branch auto
+</span><span class='line'>git config --global color.log auto # git log --graph 會很漂亮
+</span><span class='line'>cat .git/config</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<h3>常用指令</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@trac.team.xuite.net:vlog/php.git HiNet_Vlog
+</span><span class='line'>git clone git@trac.team.xuite.net:vlog/java.git VlogJMSConsumer
+</span><span class='line'>
+</span><span class='line'>git status # 或 gst
+</span><span class='line'>git diff # 或 gd
+</span><span class='line'>git log
+</span><span class='line'>git add [code path]
+</span><span class='line'>git commit # commit add 的 code
+</span><span class='line'>git push # push 回 resp
+</span><span class='line'>
+</span><span class='line'>git remote -v
+</span><span class='line'>
+</span><span class='line'># 回復未 commit 的變更 (同 svn revert)
+</span><span class='line'>git checkout [codepath]
+</span><span class='line'>
+</span><span class='line'># 還原已 commit 的檔案
+</span><span class='line'>git revert 18ead0a60740a74fd568dd885dda3b6836e582dc 
+</span><span class='line'>
+</span><span class='line'># 與 trac mapping link 的方式
+</span><span class='line'>changeset:1072fa5/vlog/php </span></code></pre></td></tr></table></div></figure>
+
+
+<h3>尋找已 git rm 的 code</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git log --name-status
+</span><span class='line'>
+</span><span class='line'># ex: 尋找 dir 或 file
+</span><span class='line'>git log --name-status net/xuite/jms/consumer
+</span><span class='line'>git log --name-status net/xuite/jms/consumer/EncodeAudio.java
+</span><span class='line'>
+</span><span class='line'># ex: 把 m4a 關鍵字的前後 5 行都列出來看
+</span><span class='line'>git log --name-status | grep -A 5 -B 5 m4a</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>要忽略的 code list, 寫在 .gitignore 裡</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat ./.gitignore
+</span><span class='line'>/scripts/log
+</span><span class='line'>/scripts/patch
+</span><span class='line'>/backend/template/compile</span></code></pre></td></tr></table></div></figure>
+
+
+<p>若用 vi 輸入 comment, 會出現 error: There was a problem with the editor &lsquo;vi&rsquo;. Please supply the message using either -m or -F option. 的錯誤, 解法如下(未測)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global core.editor /usr/bin/vim</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>ref : <br>
+<a href="http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/">http://blog.longwin.com.tw/2009/05/git-initial-env-setup-2009/</a>
+<a href="http://ihower.tw/blog/archives/2591">http://ihower.tw/blog/archives/2591</a></p>
+
+<br>
+
+
+
+
+<hr>
+
+
+<p><strong>2014-03-07 後記</strong> : 以下先 memo 起來, 下次改 java 可試(有試過一次, 但結果有點怪)</p>
+
+<p>還沒 push 前, 不想產生太多 commit, 可以用 rebase -i 進行編修, 順便合併或 reword 一些 commit</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git rebase -i 05b56946e523affc26e548482e5c909460e7fe6e (sha code)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>若失敗, 執行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git reset --hard HEAD
+</span><span class='line'>git checkout master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://blog.yorkxin.org/posts/2011/07/29/git-rebase">http://blog.yorkxin.org/posts/2011/07/29/git-rebase</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 增加分類側欄]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/"/>
+    <updated>2014-03-07T11:36:32+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan</id>
+    <content type="html"><![CDATA[<p>原本是參考這篇 <a href="http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/">http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/</a></p>
+
+<p>但發現在 rake preview 會有重覆噴 category log 的問題<br/>
+在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
+所以照著 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 的步驟來做</p>
+
+<!--more-->
+
+
+<h4>1. 到 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 將 tag_cloud.rb, category_list.html, tag_cloud.html 抓回來放到以下位置</h4>
+
+<p><img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-03-07%2011.41.34.png?_subject_uid=33912440&amp;w=AACD02dzjmreFe3am05ZJuMpb3QeF9SKYT-kONYfZdKN-g" alt="" /></p>
+
+<br/>
+
+
+<h4>2. 修改 _config.yml 的 default_asides 設定</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>default_asides: [custom/asides/tag_cloud.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>3. 重新 rake generate 再 rake preview 即可看到結果~</h4>
+
+<br/>
+
+
+<h4>註: 若要調整 css, 可以到 sass/custom/_styles.scss</h4>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Sql 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji/"/>
+    <updated>2014-02-21T14:48:32+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji</id>
+    <content type="html"><![CDATA[<h4>查看執行中 sql 的方法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>base64 encode 欄位 &ndash; encode()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">encode</span><span class="p">(</span><span class="n">convert_to</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="s1">&#39;base64&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">url</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>取 hd &ndash; &amp;</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">fmt</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span><span class="p">,</span> <span class="n">media_id</span><span class="p">,</span> <span class="n">title</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;238574878&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="n">now</span><span class="p">()::</span><span class="nb">date</span> <span class="o">+</span> <span class="nb">interval</span> <span class="s1">&#39;1h&#39;</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">crt_datetime</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">mid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">ctime</span><span class="p">)</span> <span class="k">as</span> <span class="k">month</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">ctime</span> <span class="o">&gt;=</span> <span class="s1">&#39;2012-10-01 00:00:00&#39;</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="k">month</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="k">month</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AABCHDNTIAy5NqY8eLmP0WESo2Ld6M1zwR1UdACGIjpPQQ" alt="" /></p>
+
+<br/>
+
+
+<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">uid</span><span class="p">),</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">last_upload_time</span><span class="p">)</span> <span class="k">as</span> <span class="n">total</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">member</span>
+</span><span class='line'> <span class="k">where</span> <span class="p">(</span><span class="n">audio_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">or</span> <span class="n">video_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">used_quota</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">total</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">total</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">media_id</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
+</span><span class='line'>   <span class="k">and</span> <span class="n">mid</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span>
+</span><span class='line'>     <span class="k">select</span> <span class="k">min</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+</span><span class='line'>       <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'>      <span class="k">where</span> <span class="n">uid</span><span class="o">=</span><span class="s1">&#39;236335446&#39;</span>
+</span><span class='line'>        <span class="k">and</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">and</span> <span class="k">from</span><span class="o">=</span><span class="s1">&#39;Wretch&#39;</span>
+</span><span class='line'>        <span class="k">and</span> <span class="k">public</span> <span class="o">&lt;&gt;</span> <span class="mi">100</span>
+</span><span class='line'>      <span class="k">group</span> <span class="k">by</span> <span class="n">srcpath</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">replace</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;.flv&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp4&#39;</span><span class="p">)</span><span class="o">||</span><span class="n">row_number</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">title</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;.mp4&#39;</span> <span class="k">as</span> <span class="n">cmd</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">uid</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+</span><span class='line'>   <span class="k">and</span> <span class="k">from</span> <span class="o">=</span> <span class="s1">&#39;cb&#39;</span>
+</span><span class='line'> <span class="k">order</span> <span class="k">by</span> <span class="n">title</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="k">on</span> <span class="p">(</span><span class="n">fieldname</span><span class="p">)</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablename</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">born_year</span><span class="p">,</span> <span class="n">born_date</span><span class="p">,</span> <span class="n">mobile</span><span class="p">,</span> <span class="k">zone</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">email</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">receipt_reg</span>
+</span><span class='line'> <span class="k">group</span> <span class="k">by</span> <span class="n">mobile</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html">http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html</a></p>
+
+<br/>
+
+
+<h4>mysql 的 rownum</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="n">mobile</span><span class="p">,</span> <span class="o">@</span><span class="n">rownum</span><span class="p">:</span><span class="o">=@</span><span class="n">rownum</span><span class="o">+</span><span class="mi">1</span> <span class="k">AS</span> <span class="s1">&#39;rownum&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">born_year</span><span class="p">,</span> <span class="n">born_date</span><span class="p">,</span> <span class="n">mobile</span><span class="p">,</span> <span class="k">zone</span><span class="p">,</span> <span class="n">addr</span><span class="p">,</span> <span class="n">email</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">receipt_reg</span><span class="p">,</span> <span class="p">(</span><span class="k">SELECT</span> <span class="o">@</span><span class="n">rownum</span><span class="p">:</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="n">r</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Server 設定筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/"/>
+    <updated>2014-02-21T14:41:28+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji</id>
+    <content type="html"><![CDATA[<h4>log 位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/home/logs/pg/
+</span><span class='line'>/net/home0/_vlog/logs/db/</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>設定檔位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/net/pgsql/9.2.4/data/postgresql.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>log_statement = 'all' # none, ddl, mod, all</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -1 is disabled, 0 logs all statements
+</span><span class='line'># and their durations, &gt; 0 logs only statements running at least 
+</span><span class='line'># this number of milliseconds
+</span><span class='line'>log_min_duration_statement = 3000</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用 GitHub 寫文章的步驟]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/"/>
+    <updated>2014-02-21T14:06:26+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
+</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
+
+
+<p>會得到文章的檔名
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
+
+<!--more-->
+
+
+<p>再用 Mou 或 vi 編輯內容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>open -a Mou source/_posts/2014-01-09-first-article.markdown 
+</span><span class='line'># or
+</span><span class='line'>open source/_posts/2014-01-09-first-article.markdown 
+</span><span class='line'># or
+</span><span class='line'>vi source/_posts/2014-01-09-first-article.markdown
+</span><span class='line'># 可以打開 Mou 的說明頁參考 markdown 語法
+</span><span class='line'>open /Applications/Mou.app/Contents/Resources/help.md</span></code></pre></td></tr></table></div></figure>
+
+
+<p>內容 sample</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>title: "first article"
+</span><span class='line'>date: 2014-01-09 15:03:44 +0800
+</span><span class='line'>comments: true
+</span><span class='line'>categories: 'Technical'
+</span><span class='line'>tags: ['github', 'octopress']
+</span><span class='line'>---
+</span><span class='line'>this is my first article @ github by octopress
+</span><span class='line'>* line1
+</span><span class='line'>* line2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>文章寫完後執行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate # 沒做似乎也可以
+</span><span class='line'>rake preview # for local preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>沒問題的話就 push 到 github</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m "first article"
+</span><span class='line'>git push origin source
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>到線上看結果
+<a href="http://trully.github.io/">http://trully.github.io/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Octopress 建立 Github Blog]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/title/"/>
+    <updated>2014-02-21T10:54:27+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/title</id>
+    <content type="html"><![CDATA[<h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
+</span><span class='line'>git --version
+</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<br/>
+
+
+<h3>2. 安裝 Octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/trully/apps
+</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
+</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<p>此時的 branch 是 master
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.06.46.png?_subject_uid=33912440&amp;w=AACAf1-mUPcA5dU-VP7AKL2QFqv3mPwAs-DSkVcN3AvSdA" alt="" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sduo gem install bundler
+</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h3>3. 在 GitHub 建立 repository</h3>
+
+<ol>
+<li>連到 <a href="https://github.com/new">https://github.com/new</a></li>
+<li>建立名為 <strong>trully.github.io</strong> 的 repository
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&amp;w=AADHEPkwrct4AZ7PITVbVHGOmc-RUlgdN3U3z8tz11vYpw" alt="" /></li>
+</ol>
+
+
+<br/>
+
+
+<h3>4. 設定 Octopress</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vi _config.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>先只改 <strong>Main Configs</strong> 的部份; 這裡的 url 要改成剛才建的 repository
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.16.57.png?_subject_uid=33912440&amp;w=AABfELhGqDYucduD-oZYFGr_A9cThUa_BD3Qib1hmB6W6w" alt="" /></p>
+
+<br/>
+
+
+<h3>5. deploy 到 GitHub</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>repository 輸入 : <strong>git@github.com:trully/trully.github.io.git</strong>
+成功的話, 此時的 branch 會變成 source, 可以下 <strong>git remote -v</strong> 看一下
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&amp;w=AABptXJVNhNi8zUG2aBug8zs0AlrEO2qIs6svDmhaXEhpg" alt="" /><br/>
+這裡做<br/>
+1. 將 branch 從 master 切換到 source<br/>
+2. 建立 _deploy 目錄, 用來放 deploy 到 master branch 的內容 (client 這邊是 source, 但 push 到 github 的 master)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然後把 source commit 上去</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
+</span><span class='line'>git commit -m 'initinal github blog'
+</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一切順利的話, 約十分鐘後連到 <a href="http://trully.github.io">http://trully.github.io</a> 會自到以下的畫面
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.02.57.png?_subject_uid=33912440&amp;w=AAArMN71AoovTt9Yh8JHthSQl0xw-d0BuFoI8QaslYZNtw" alt="" /></p>
+
+<p>若要在 client side 先 preview 可以下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然後打開 <a href="http://localhost:4000/">http://localhost:4000/</a></p>
+
+<br/>
+
+
+<h4>Reference</h4>
+
+<ul>
+<li><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/</a></li>
+<li><a href="http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/">http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/</a></li>
+<li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
+<li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First Article]]></title>
@@ -73,6 +823,15 @@
 </span><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">ary</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 </span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;haha&quot;</span><span class="o">);</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>

@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Life is Struggle</title>
+  <title>在 Php 程式裡看 Server 的 Error Log - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="重點: fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5//IGNORE&rsquo;, $line)); ">
+  <meta name="description" content="在程式最前面加這二行 1
+2
+ini_set(&#39;display_errors&#39;, &#39;On&#39;);
+error_reporting(E_ERROR | E_WARNING | E_PARSE); ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -61,56 +64,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/">Php 匯出 Csv 轉成 Big5 編碼</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-07T17:48:21+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>重點: fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5//IGNORE&rsquo;, $line));</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log/">在 Php 程式裡看 Server 的 Error Log</a></h1>
+      <h1 class="entry-title">在 Php 程式裡看 Server 的 Error Log</h1>
     
     
       <p class="meta">
@@ -133,7 +92,7 @@
   </header>
 
 
-  <div class="entry-content"><p>在程式最前面加這二行</p>
+<div class="entry-content"><p>在程式最前面加這二行</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -142,72 +101,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/">Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">trully</span></span>
 
-<time datetime="2014-03-07T17:16:37+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有以下二個方法</p>
-
-<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
-
-<h4>2.或在 code 裡宣告</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">set_time_limit</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$seconds</span><span class="p">)</span> <span class="c1"># If set to zero, no time limit is imposed</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<br>
-
-
-<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/07/git-jian-yi-bi-ji/">Git 簡易筆記</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -219,99 +122,38 @@
   
 
 
-<time datetime="2014-03-07T16:31:03+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>環境設定</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git config user.name trully
-</span><span class='line'>git config user.email username@email.com
-</span><span class='line'>git config --global user.name "trully"
-</span><span class='line'>git config --global user.email "username@email.com"
-</span><span class='line'>git config --global color.diff auto # git diff 要顯示顏色
-</span><span class='line'>git config --global color.status auto # git status 要顯示顏色
-</span><span class='line'>git config --global color.branch auto
-</span><span class='line'>git config --global color.log auto # git log --graph 會很漂亮
-</span><span class='line'>cat .git/config</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/03/07/git-jian-yi-bi-ji/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2014-03-07T17:44:10+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Octopress 增加分類側欄</a></h1>
-    
-    
-      <p class="meta">
-        
 
-
-
-
-
-
-
-
+<span class="categories">
   
+    <a class='category' href='/blog/categories/programming/'>PROGRAMMING</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
 
 
-<time datetime="2014-03-07T11:36:32+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
-        
-      </p>
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><p>原本是參考這篇 <a href="http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/">http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/</a></p>
-
-<p>但發現在 rake preview 會有重覆噴 category log 的問題<br/>
-在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
-所以照著 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 的步驟來做</p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/" title="Previous Post: php 出現 Maximum execution time of 30 seconds exceeded 的解法">&laquo; php 出現 Maximum execution time of 30 seconds exceeded 的解法</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/" title="Next Post: php 匯出 csv 轉成 big5 編碼">php 匯出 csv 轉成 big5 編碼 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -373,6 +215,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

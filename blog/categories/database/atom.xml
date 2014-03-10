@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: DATABASE | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-07T19:47:00+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Sql 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji/"/>
+    <updated>2014-02-21T14:48:32+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji</id>
+    <content type="html"><![CDATA[<h4>查看執行中 sql 的方法</h4>
+
+<p><code>sql
+select * from pg_stat_activity
+</code></p>
+
+<br/>
+
+
+<h4>base64 encode 欄位 &ndash; encode()</h4>
+
+<p><code>sql
+select encode(convert_to(fname,'utf-8'), 'base64') as url
+  from media
+ where media_type in(1,2)
+</code></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>取 hd &ndash; &amp;</h4>
+
+<p><code>sql
+select * from media where fmt &amp; 2 = 2
+</code></p>
+
+<br/>
+
+
+<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+
+<p><code>sql
+select now()::date, media_id, title
+  from media
+ where uid = '238574878'
+   and from = 'Wretch'
+   and ctime &gt;= now()::date + interval '1h'
+ order by crt_datetime
+</code></p>
+
+<br/>
+
+
+<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+
+<p><code>sql
+select count(mid), date_trunc('month', ctime) as month
+  from media
+ where ctime &gt;= '2012-10-01 00:00:00'
+ group by month
+ order by month
+</code>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-02-21%2014.53.13.png?_subject_uid=33912440&amp;w=AABCHDNTIAy5NqY8eLmP0WESo2Ld6M1zwR1UdACGIjpPQQ" alt="" /></p>
+
+<br/>
+
+
+<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+
+<p><code>sql
+select count(uid), date_trunc('year', last_upload_time) as total
+  from member
+ where (audio_cnt &gt; 0 or video_cnt &gt; 0)
+   and used_quota &gt; 0
+ group by total
+ order by total
+</code></p>
+
+<br/>
+
+
+<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+
+<p>``` sql
+select media_id
+  from media
+ where uid=&lsquo;236335446&rsquo;
+   and media_type in(1,2)
+   and from=&lsquo;Wretch&rsquo;
+   and public &lt;> 100
+   and mid not in (</p>
+
+<pre><code> select min(mid)
+   from media
+  where uid='236335446'
+    and media_type in(1,2)
+    and from='Wretch'
+    and public &lt;&gt; 100
+  group by srcpath
+</code></pre>
+
+<p>)
+```</p>
+
+<br/>
+
+
+<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+
+<p><code>sql
+select replace(fname, '.flv', '.mp4')||row_number() OVER (ORDER BY title)||'.mp4' as cmd
+  from media
+ where uid = 'xxx'
+   and from = 'cb'
+ order by title
+</code></p>
+
+<br/>
+
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+
+<p><code>sql
+select distinct on (fieldname) * from tablename
+</code></p>
+
+<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+
+<p><code>sql
+select name, sex, born_year, born_date, mobile, zone, addr, email
+  from receipt_reg
+ group by mobile
+</code>
+ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html">http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-postgresql.html</a></p>
+
+<br/>
+
+
+<h4>mysql 的 rownum</h4>
+
+<p><code>sql
+select distinct mobile, @rownum:=@rownum+1 AS 'rownum', name, sex, born_year, born_date, mobile, zone, addr, email
+  from receipt_reg, (SELECT @rownum:=0) r
+</code>
+ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL Server 設定筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji/"/>
+    <updated>2014-02-21T14:41:28+08:00</updated>
+    <id>http://trully.github.io/blog/2014/02/21/postgresql-server-she-ding-bi-ji</id>
+    <content type="html"><![CDATA[<h4>log 位置</h4>
+
+<p><code>
+/home/logs/pg/
+/net/home0/_vlog/logs/db/
+</code></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>設定檔位置</h4>
+
+<p><code>
+/net/pgsql/9.2.4/data/postgresql.conf
+</code></p>
+
+<h4>若要紀錄所有執行的 sql, 在 postgresql.conf 做以下設定</h4>
+
+<p><code>
+log_statement = 'all' # none, ddl, mod, all
+</code></p>
+
+<h4>若要紀錄執行時間 > 3 秒的 sql</h4>
+
+<p>```</p>
+
+<h1>-1 is disabled, 0 logs all statements</h1>
+
+<h1>and their durations, > 0 logs only statements running at least</h1>
+
+<h1>this number of milliseconds</h1>
+
+<p>log_min_duration_statement = 3000
+```
+ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

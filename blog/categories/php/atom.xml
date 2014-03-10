@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Php | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-07T19:47:00+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Php 匯出 Csv 轉成 Big5 編碼]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/"/>
+    <updated>2014-03-07T17:48:21+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma</id>
+    <content type="html"><![CDATA[<p>重點: fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5//IGNORE&rsquo;, $line));</p>
+
+<!-- more -->
+
+
+<p>``` php
+$line = &ldquo;\"編號\&rdquo;,\&ldquo;姓名\&rdquo;,\&ldquo;性別\&rdquo;,\&ldquo;出生年\&rdquo;,\&ldquo;出生月日\&rdquo;,\&ldquo;聯絡電話\&rdquo;,\&ldquo;郵遞區號 縣市\&rdquo;,\&ldquo;地址\&rdquo;,\&ldquo;E-Mail\&rdquo;,\&ldquo;白色沙瓦\&rdquo;,\&ldquo;蘋果\&rdquo;,\&ldquo;白桃\&rdquo;,\&ldquo;葡萄沙瓦\&rdquo;,\&ldquo;蜂蜜檸檬\&rdquo;,\&ldquo;檸檬薑汁\&rdquo;,\&ldquo;冬橘\&rdquo;,\&ldquo;通路\&rdquo;,\&ldquo;發票號碼\&rdquo;,\&ldquo;填寫時間\&rdquo;&ldquo;.chr(13);</p>
+
+<h1>寫檔</h1>
+
+<p>$fh = fopen($filePath, &lsquo;w+&rsquo;);
+fwrite($fh, iconv(&lsquo;UTF-8&rsquo;, &lsquo;BIG5&rsquo;, $line));</p>
+
+<p>$cnt = 1;
+foreach ($result[&lsquo;result&rsquo;] as $row) {</p>
+
+<pre><code>$no         = $cnt;
+$name       = $util-&gt;readFromDB($row['name']);
+$sex        = $util-&gt;readFromDB($row['sex']);
+$bornYear   = $util-&gt;readFromDB($row['bornYear']);
+$bornDate   = $util-&gt;readFromDB($row['bornDate']);
+$mobile     = $util-&gt;readFromDB($row['mobile']);
+$drink0     = $row['drink0'] == 1 ? '白色沙瓦' : '';
+$drink1     = $row['drink1'] == 1 ? '蘋果' : '';
+$drink2     = $row['drink2'] == 1 ? '白桃' : '';
+$drink3     = $row['drink3'] == 1 ? '葡萄沙瓦' : '';
+$drink4     = $row['drink4'] == 1 ? '蜂蜜檸檬' : '';
+$drink5     = $row['drink5'] == 1 ? '檸檬薑汁' : '';
+$drink6     = $row['drink6'] == 1 ? '冬橘' : '';
+
+# 要用 \" 跳脫一下特殊符號
+$line = "\"$no\",\"$name\",\"$sex\",\"$bornYear\",\"$bornDate\",\"$mobile\",\"$zone\",\"$addr\",\"$email\",\"$drink0\",\"$drink1\",\"$drink2\",\"$drink3\",\"$drink4\",\"$drink5\",\"$drink6\",\"$channel\",\"$receiptNo\",\"$ctime\"".chr(13);
+# 將 utf-8 轉換為 big5, 沒辦法, 因為是 ms 的東西
+fwrite($fh, iconv('UTF-8', 'BIG5//IGNORE', $line));
+$cnt++;
+</code></pre>
+
+<p>}
+fclose($fh);
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Php 程式裡看 Server 的 Error Log]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log/"/>
+    <updated>2014-03-07T17:44:10+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/zai-php-cheng-shi-li-kan-server-de-error-log</id>
+    <content type="html"><![CDATA[<p>在程式最前面加這二行
+<code>php
+ini_set('display_errors', 'On');
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法]]></title>
+    <link href="http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/"/>
+    <updated>2014-03-07T17:16:37+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa</id>
+    <content type="html"><![CDATA[<p>有以下二個方法</p>
+
+<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
+
+<h4>2.或在 code 裡宣告</h4>
+
+<p><code>php
+set_time_limit(int $seconds) # If set to zero, no time limit is imposed
+</code></p>
+
+<br>
+
+
+<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
+]]></content>
+  </entry>
+  
+</feed>
