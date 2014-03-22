@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cmd | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/cmd/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-22T12:35:03+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tar 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/22/r-bi-ji/"/>
+    <updated>2014-03-22T12:15:50+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/22/r-bi-ji</id>
+    <content type="html"><![CDATA[<h3>解壓縮到指定資料夾</h3>
+
+<p><code>
+tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar
+</code>
+-C 要大寫, 指定 output 到 /tmp/trully/test.tar <br/>
+ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtoday.com/2010/09/tar.html</a></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h3>壓縮時不包含某些檔案</h3>
+
+<p>ex: 不包含 ./janny04369-data/xuite/album/<em> 與 ./janny04369-data/xuite/video/</em>
+<code>
+tar -cvf /tmp/trully/wretch3.tar ./janny04369-data --exclude="./janny04369-data/xuite/album/*" --exclude="./janny04369-data/xuite/video/*”
+</code></p>
+
+<br/>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,11 +9,8 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="查看執行中 sql 的方法 1
-select * from pg_stat_activity base64 encode 欄位 &ndash; encode() 1
-2
-3
-select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
+  <meta name="description" content="原本是參考這篇 http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/ 但發現在 rake preview 會有重覆噴 category log 的問題
+在底下的留言發現有人解決, 而且把 code &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +64,51 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Octopress 增加分類側欄</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-07T11:36:32+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>原本是參考這篇 <a href="http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/">http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/</a></p>
+
+<p>但發現在 rake preview 會有重覆噴 category log 的問題<br/>
+在底下的留言發現有人解決, 而且把 code 貢獻出來 (網路上的好人真多^^)<br/>
+所以照著 <a href="https://github.com/tokkonopapa/octopress-tagcloud">https://github.com/tokkonopapa/octopress-tagcloud</a> 的步驟來做</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -274,107 +316,9 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/09/first-article/">First Article</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-09T15:03:44+08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>this is my first article @ github by octopress
-你好</p>
-
-<ul>
-<li>line1</li>
-<li>line2</li>
-<li>line3</li>
-<li>line4</li>
-</ul>
-
-
-<p>code test</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>php test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">phpinfo</span><span class="p">();</span>
-</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>javascript test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">aa</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>html test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;userid&quot;</span> <span class="na">id=</span><span class="s">&quot;userid&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>java tset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">sun.java.util.*</span><span class="o">;</span>
-</span><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">ary</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;haha&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -386,13 +330,17 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/database' style='font-size: 130.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 130.0%'>github(2)</a> <a href='/blog/categories/mysql' style='font-size: 115.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 145.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 145.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 160.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 145.0%'>TECHNICAL(3)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 115.0%'>cmd(1)</a> <a href='/blog/categories/database' style='font-size: 130.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 130.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 115.0%'>LINUX(1)</a> <a href='/blog/categories/mysql' style='font-size: 115.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 145.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 145.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 160.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 145.0%'>TECHNICAL(3)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (1)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (1)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/22/r-bi-ji/">Tar 筆記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/07/php-hui-chu-csv-zhuan-cheng-big5-bian-ma/">Php 匯出 Csv 轉成 Big5 編碼</a>
@@ -428,10 +376,6 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
     
       <li class="post">
         <a href="/blog/2014/02/21/title/">使用 Octopress 建立 Github Blog</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/09/first-article/">First Article</a>
       </li>
     
   </ul>
