@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Cmd | Life is Struggle]]></title>
-  <link href="http://trully.github.io/blog/categories/cmd/atom.xml" rel="self"/>
+  <title><![CDATA[Category: LNUX | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/lnux/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
   <updated>2014-03-23T17:18:53+08:00</updated>
   <id>http://trully.github.io/</id>
@@ -69,17 +69,13 @@ grep -Ri getInfo * # i 表示不分大小寫
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Tar 筆記]]></title>
-    <link href="http://trully.github.io/blog/2014/03/22/r-bi-ji/"/>
-    <updated>2014-03-22T12:15:50+08:00</updated>
-    <id>http://trully.github.io/blog/2014/03/22/r-bi-ji</id>
-    <content type="html"><![CDATA[<h3>解壓縮到指定資料夾</h3>
-
-<p><code>
-tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar
-</code>
--C 要大寫, 指定 output 到 /tmp/trully/test.tar <br/>
-ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtoday.com/2010/09/tar.html</a></p>
+    <title type="html"><![CDATA[在 Vi 輸入 ^[ 符號]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao/"/>
+    <updated>2014-03-23T16:16:15+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao</id>
+    <content type="html"><![CDATA[<p>I need to send &ldquo;^[&rdquo; command to the buffer. <br/>
+<strong>&lsquo;ctrl&rsquo; + &lsquo;v&rsquo; + &lsquo;[&rsquo;</strong> <br/>
+(with &lsquo;ctrl&rsquo; being pressed)</p>
 
 <!--more-->
 
@@ -87,16 +83,13 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h3>壓縮時不包含某些檔案</h3>
+<p>其他相關技巧</p>
 
-<p>ex: 不包含 ./janny04369-data/xuite/album/<em> 與 ./janny04369-data/xuite/video/</em>
-<code>
-tar -cvf /tmp/trully/wretch3.tar ./janny04369-data --exclude="./janny04369-data/xuite/album/*" --exclude="./janny04369-data/xuite/video/*”
-</code></p>
+<p>在 terminal 選取整列 => <strong>Shift + Command + double_click</strong></p>
+
+<p>mac 快速輸入各式特殊符號 => <strong>command + option + T </strong></p>
 
 <br/>
-
-
 
 ]]></content>
   </entry>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: WINDOWS | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-23T17:18:53+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Windows 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/windows-bi-ji/"/>
+    <updated>2014-03-23T17:06:02+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/windows-bi-ji</id>
+    <content type="html"><![CDATA[<h3>設定 xp 3 秒後關機</h3>
+
+<p><code>
+Shutdown.exe -s -t 3
+</code></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h3>用 chrome 下載 mega 的檔案會暫存在</h3>
+
+<p><code>
+C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\File System
+</code>
+需要自行手動清除, 不然很佔空間</p>
+
+<p>而 mac 會暫存在
+<code>
+/Users/trully/Library/Application Support/Google/Chrome/Default/File System/003/t/00
+</code>
+可以用 du 看一下, 不一定是 003</p>
+
+<br/>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,12 +9,11 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="this is my first article @ github by octopress
-你好 line1
-line2
-line3
-line4 code test 1
-$ git clone git@github.com:imathis/octopress.git # fork &hellip;">
+  <meta name="description" content="查看執行中 sql 的方法 1
+select * from pg_stat_activity base64 encode 欄位 &ndash; encode() 1
+2
+3
+select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +67,212 @@ $ git clone git@github.com:imathis/octopress.git # fork &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/postgresql-sql-bi-ji/">PostgreSQL Sql 筆記</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-21T14:48:32+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>查看執行中 sql 的方法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>base64 encode 欄位 &ndash; encode()</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">encode</span><span class="p">(</span><span class="n">convert_to</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="s1">&#39;base64&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">url</span>
+</span><span class='line'>  <span class="k">from</span> <span class="n">media</span>
+</span><span class='line'> <span class="k">where</span> <span class="n">media_type</span> <span class="k">in</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/postgresql-sql-bi-ji/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/postgresql-server-she-ding-bi-ji/">PostgreSQL Server 設定筆記</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-21T14:41:28+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>log 位置</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/home/logs/pg/
+</span><span class='line'>/net/home0/_vlog/logs/db/</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/postgresql-server-she-ding-bi-ji/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">用 GitHub 寫文章的步驟</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-21T14:06:26+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
+</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
+
+
+<p>會得到文章的檔名
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/21/title/">使用 Octopress 建立 Github Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-21T10:54:27+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
+</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
+</span><span class='line'>git --version
+</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/21/title/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -181,13 +386,29 @@ $ git clone git@github.com:imathis/octopress.git # fork &hellip;">
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 115.0%'>cmd(1)</a> <a href='/blog/categories/database' style='font-size: 130.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 130.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 115.0%'>LINUX(1)</a> <a href='/blog/categories/mysql' style='font-size: 115.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 145.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 145.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 160.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 145.0%'>TECHNICAL(3)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 145.0%'>cmd(3)</a> <a href='/blog/categories/database' style='font-size: 130.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 130.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 115.0%'>LINUX(1)</a> <a href='/blog/categories/lnux' style='font-size: 145.0%'>LNUX(3)</a> <a href='/blog/categories/mysql' style='font-size: 115.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 145.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 145.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 160.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 145.0%'>TECHNICAL(3)</a> <a href='/blog/categories/vi' style='font-size: 115.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 115.0%'>WINDOWS(1)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (1)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (1)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (3)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (1)</a></li><li><a href='/blog/categories/lnux/'>LNUX (3)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai/">利用 Sed 做字串的多筆取代</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/grep-bi-ji/">Grep 筆記</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/windows-bi-ji/">Windows 筆記</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/zai-vi-shu-ru-fu-hao/">在 Vi 輸入 ^[ 符號</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/22/r-bi-ji/">Tar 筆記</a>
@@ -211,22 +432,6 @@ $ git clone git@github.com:imathis/octopress.git # fork &hellip;">
     
       <li class="post">
         <a href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Octopress 增加分類側欄</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/postgresql-sql-bi-ji/">PostgreSQL Sql 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/postgresql-server-she-ding-bi-ji/">PostgreSQL Server 設定筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">用 GitHub 寫文章的步驟</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/title/">使用 Octopress 建立 Github Blog</a>
       </li>
     
   </ul>
