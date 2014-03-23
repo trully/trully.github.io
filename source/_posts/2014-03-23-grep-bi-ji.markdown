@@ -1,0 +1,25 @@
+---
+layout: post
+title: "grep 筆記"
+date: 2014-03-23 17:12:45 +0800
+comments: true
+categories: ['LNUX', 'cmd']
+---
+
+###grep 某 pattern 時, 帶出前或後 n 行###
+含前二行 -B 2 (B:before)
+```
+cat /home/logs/php/vlog_patch.log | grep -B 2 'different'
+```
+含後二行 -A 2 (A:after)
+```
+cat /home/logs/php/vlog_patch.log | grep -A 2 'different'
+```
+<!--more--><br/>
+
+###搜尋檔案內容###
+ex: 搜尋 getInfo 字串
+```
+grep -Ri getInfo * # i 表示不分大小寫
+```
+<br/>
