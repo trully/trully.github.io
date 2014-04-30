@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: LNUX | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/lnux/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-23T17:18:53+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[利用 Sed 做字串的多筆取代]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai/"/>
+    <updated>2014-03-23T17:16:57+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai</id>
+    <content type="html"><![CDATA[<p>argv=$(echo ${MOBILES} | <strong>sed &ldquo;s/ /@@/g”</strong>)
+```
+MOBILES="0988222784 0911070610 0916928508 0910081920&rdquo;</p>
+
+<h1>將號嗎間的空白改由 @@ 取代, 這樣多筆才能順利傳進 php 裡</h1>
+
+<h1>argv=${MOBILES/ /@@} 這樣寫只能取代一次</h1>
+
+<p>argv=$(echo ${MOBILES} | sed &ldquo;s/ /@@/g”)
+```</p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Grep 筆記]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/grep-bi-ji/"/>
+    <updated>2014-03-23T17:12:45+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/grep-bi-ji</id>
+    <content type="html"><![CDATA[<h3>grep 某 pattern 時, 帶出前或後 n 行</h3>
+
+<p>含前二行 -B 2 (B:before)
+<code>
+cat /home/logs/php/vlog_patch.log | grep -B 2 'different'
+</code>
+含後二行 -A 2 (A:after)
+<code>
+cat /home/logs/php/vlog_patch.log | grep -A 2 'different'
+</code></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h3>搜尋檔案內容</h3>
+
+<p>ex: 搜尋 getInfo 字串
+<code>
+grep -Ri getInfo * # i 表示不分大小寫
+</code></p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在 Vi 輸入 ^[ 符號]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao/"/>
+    <updated>2014-03-23T16:16:15+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao</id>
+    <content type="html"><![CDATA[<p>I need to send &ldquo;^[&rdquo; command to the buffer. <br/>
+<strong>&lsquo;ctrl&rsquo; + &lsquo;v&rsquo; + &lsquo;[&rsquo;</strong> <br/>
+(with &lsquo;ctrl&rsquo; being pressed)</p>
+
+<!--more-->
+
+
+<br/>
+
+
+<p>其他相關技巧</p>
+
+<p>在 terminal 選取整列 => <strong>Shift + Command + double_click</strong></p>
+
+<p>mac 快速輸入各式特殊符號 => <strong>command + option + T </strong></p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+</feed>

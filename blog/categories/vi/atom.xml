@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vi | Life is Struggle]]></title>
+  <link href="http://trully.github.io/blog/categories/vi/atom.xml" rel="self"/>
+  <link href="http://trully.github.io/"/>
+  <updated>2014-03-23T17:18:53+08:00</updated>
+  <id>http://trully.github.io/</id>
+  <author>
+    <name><![CDATA[trully]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在 Vi 輸入 ^[ 符號]]></title>
+    <link href="http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao/"/>
+    <updated>2014-03-23T16:16:15+08:00</updated>
+    <id>http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao</id>
+    <content type="html"><![CDATA[<p>I need to send &ldquo;^[&rdquo; command to the buffer. <br/>
+<strong>&lsquo;ctrl&rsquo; + &lsquo;v&rsquo; + &lsquo;[&rsquo;</strong> <br/>
+(with &lsquo;ctrl&rsquo; being pressed)</p>
+
+<!--more-->
+
+
+<br/>
+
+
+<p>其他相關技巧</p>
+
+<p>在 terminal 選取整列 => <strong>Shift + Command + double_click</strong></p>
+
+<p>mac 快速輸入各式特殊符號 => <strong>command + option + T </strong></p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+</feed>
