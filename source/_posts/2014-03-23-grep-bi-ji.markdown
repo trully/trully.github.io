@@ -3,7 +3,7 @@ layout: post
 title: "grep 筆記"
 date: 2014-03-23 17:12:45 +0800
 comments: true
-categories: ['LNUX', 'cmd']
+categories: ['LINUX', 'cmd']
 ---
 
 ###grep 某 pattern 時, 帶出前或後 n 行###

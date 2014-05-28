@@ -3,7 +3,7 @@ layout: post
 title: "利用 sed 做字串的多筆取代"
 date: 2014-03-23 17:16:57 +0800
 comments: true
-categories: ['LNUX', 'cmd']
+categories: ['LINUX', 'cmd']
 ---
 
 argv=$(echo ${MOBILES} | **sed "s/ /@@/g”**)
