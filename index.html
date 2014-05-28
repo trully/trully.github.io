@@ -9,13 +9,17 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="argv=$(echo ${MOBILES} | sed &ldquo;s/ /@@/g”) 1
+  <meta name="description" content="安裝 gst 1
 2
 3
 4
-MOBILES="0988222784 0911070610 0916928508 0910081920"
-# 將號嗎間的空白改由 @@ 取代, 這樣多筆才能順利傳進 php 裡
-# &hellip;">
+5
+6
+wget http://outflux.net/unix/software/gsh/download/gsh-1.0.2.tar.gz
+tar zxf gsh-1.0.2.tar.gz
+cd gsh-1.0.2
+perl Makefile.PL
+make &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +73,64 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/">使用 Gsh 對多台 Server 下指令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T10:15:56+08:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>安裝 gst</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://outflux.net/unix/software/gsh/download/gsh-1.0.2.tar.gz
+</span><span class='line'>tar zxf gsh-1.0.2.tar.gz
+</span><span class='line'>cd gsh-1.0.2
+</span><span class='line'>perl Makefile.PL
+</span><span class='line'>make
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -260,54 +322,6 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/22/r-bi-ji/">Tar 筆記</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-22T12:15:50+08:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>解壓縮到指定資料夾</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar</span></code></pre></td></tr></table></div></figure>
-
-
-<p>-C 要大寫, 指定 output 到 /tmp/trully/test.tar <br/>
-ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtoday.com/2010/09/tar.html</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/03/22/r-bi-ji/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -320,13 +334,17 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 145.0%'>cmd(3)</a> <a href='/blog/categories/database' style='font-size: 130.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 115.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 130.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(4)</a> <a href='/blog/categories/mysql' style='font-size: 115.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 145.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 145.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 160.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 145.0%'>TECHNICAL(3)</a> <a href='/blog/categories/vi' style='font-size: 115.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 115.0%'>WINDOWS(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 148.0%'>cmd(4)</a> <a href='/blog/categories/database' style='font-size: 124.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 112.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(5)</a> <a href='/blog/categories/mysql' style='font-size: 112.0%'>mysql(1)</a> <a href='/blog/categories/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 124.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 136.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 148.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 136.0%'>TECHNICAL(3)</a> <a href='/blog/categories/vi' style='font-size: 112.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>WINDOWS(1)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (3)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (4)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (4)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (5)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (3)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/">使用 Gsh 對多台 Server 下指令</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai/">利用 Sed 做字串的多筆取代</a>
@@ -362,10 +380,6 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
     
       <li class="post">
         <a href="/blog/2014/03/07/git-jian-yi-bi-ji/">Git 簡易筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/07/octopress-zeng-jia-fen-lei-ce-lan/">Octopress 增加分類側欄</a>
       </li>
     
   </ul>

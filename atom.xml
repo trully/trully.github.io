@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-28T10:08:57+08:00</updated>
+  <updated>2014-05-28T10:27:37+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Gsh 對多台 Server 下指令]]></title>
+    <link href="http://trully.github.io/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/"/>
+    <updated>2014-05-28T10:15:56+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling</id>
+    <content type="html"><![CDATA[<ul>
+<li>安裝 gst</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://outflux.net/unix/software/gsh/download/gsh-1.0.2.tar.gz
+</span><span class='line'>tar zxf gsh-1.0.2.tar.gz
+</span><span class='line'>cd gsh-1.0.2
+</span><span class='line'>perl Makefile.PL
+</span><span class='line'>make
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<ul>
+<li>vi /etc/ghosts</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 第一個欄位: hostname or ip
+</span><span class='line'># 第二個欄位之後: tag, 用以定義群組
+</span><span class='line'>vst-31 vst tag1
+</span><span class='line'>vst-32 vst tag1
+</span><span class='line'>vst-33 vst tag2
+</span><span class='line'>vst-34 vst tag2
+</span><span class='line'>vst-35 vst tag2</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>執行方式</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 含有 vst 的 server
+</span><span class='line'>gsh vst "df -h"
+</span><span class='line'># 含有 tag2 的 server
+</span><span class='line'>gsh tag2 "df -h"
+</span><span class='line'># 含有 vst 但排除 tag1 的 server
+</span><span class='line'>gsh vst-tag1 "tail -f error.log"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<br/>
+
+
+<p>ref : <a href="http://jamyy.us.to/blog/2014/05/6415.html">http://jamyy.us.to/blog/2014/05/6415.html</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用 Sed 做字串的多筆取代]]></title>

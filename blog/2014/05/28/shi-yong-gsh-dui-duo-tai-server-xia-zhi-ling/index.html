@@ -5,17 +5,21 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>利用 Sed 做字串的多筆取代 - Life is Struggle</title>
+  <title>使用 Gsh 對多台 Server 下指令 - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="argv=$(echo ${MOBILES} | sed &ldquo;s/ /@@/g”) 1
+  <meta name="description" content="安裝 gst 1
 2
 3
 4
-MOBILES="0988222784 0911070610 0916928508 0910081920"
-# 將號嗎間的空白改由 @@ 取代, 這樣多筆才能順利傳進 php 裡
-# &hellip;">
+5
+6
+wget http://outflux.net/unix/software/gsh/download/gsh-1.0.2.tar.gz
+tar zxf gsh-1.0.2.tar.gz
+cd gsh-1.0.2
+perl Makefile.PL
+make &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +28,7 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -72,7 +76,7 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
   
   <header>
     
-      <h1 class="entry-title">利用 Sed 做字串的多筆取代</h1>
+      <h1 class="entry-title">使用 Gsh 對多台 Server 下指令</h1>
     
     
       <p class="meta">
@@ -88,27 +92,81 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
   
 
 
-<time datetime="2014-03-23T17:16:57+08:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
+<time datetime="2014-05-28T10:15:56+08:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>argv=$(echo ${MOBILES} | <strong>sed &ldquo;s/ /@@/g”</strong>)</p>
+<div class="entry-content"><ul>
+<li>安裝 gst</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>MOBILES="0988222784 0911070610 0916928508 0910081920"
-</span><span class='line'># 將號嗎間的空白改由 @@ 取代, 這樣多筆才能順利傳進 php 裡
-</span><span class='line'>#argv=${MOBILES/ /@@} 這樣寫只能取代一次
-</span><span class='line'>argv=$(echo ${MOBILES} | sed "s/ /@@/g”) </span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://outflux.net/unix/software/gsh/download/gsh-1.0.2.tar.gz
+</span><span class='line'>tar zxf gsh-1.0.2.tar.gz
+</span><span class='line'>cd gsh-1.0.2
+</span><span class='line'>perl Makefile.PL
+</span><span class='line'>make
+</span><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<ul>
+<li>vi /etc/ghosts</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 第一個欄位: hostname or ip
+</span><span class='line'># 第二個欄位之後: tag, 用以定義群組
+</span><span class='line'>vst-31 vst tag1
+</span><span class='line'>vst-32 vst tag1
+</span><span class='line'>vst-33 vst tag2
+</span><span class='line'>vst-34 vst tag2
+</span><span class='line'>vst-35 vst tag2</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>執行方式</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 含有 vst 的 server
+</span><span class='line'>gsh vst "df -h"
+</span><span class='line'># 含有 tag2 的 server
+</span><span class='line'>gsh tag2 "df -h"
+</span><span class='line'># 含有 vst 但排除 tag1 的 server
+</span><span class='line'>gsh vst-tag1 "tail -f error.log"</span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <br/>
 
+
+<p>ref : <a href="http://jamyy.us.to/blog/2014/05/6415.html">http://jamyy.us.to/blog/2014/05/6415.html</a></p>
 </div>
 
 
@@ -131,7 +189,7 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
   
 
 
-<time datetime="2014-03-23T17:16:57+08:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2014</time>
+<time datetime="2014-05-28T10:15:56+08:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -152,10 +210,8 @@ MOBILES="0988222784 0911070610 0916928508 0910081920"
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/23/grep-bi-ji/" title="Previous Post: grep 筆記">&laquo; grep 筆記</a>
+        <a class="basic-alignment left" href="/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai/" title="Previous Post: 利用 sed 做字串的多筆取代">&laquo; 利用 sed 做字串的多筆取代</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/" title="Next Post: 使用 gsh 對多台 server 下指令">使用 gsh 對多台 server 下指令 &raquo;</a>
       
     </p>
   </footer>
