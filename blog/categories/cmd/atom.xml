@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cmd | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/cmd/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-28T10:27:37+08:00</updated>
+  <updated>2014-05-30T18:32:21+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Iconv 將字幕檔轉碼 (Big5 to UTF-8)]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/shi-yong-iconv-jiang-zi-mu-dang-zhuan-ma-big5-to-utf-8/"/>
+    <updated>2014-05-30T17:33:18+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/shi-yong-iconv-jiang-zi-mu-dang-zhuan-ma-big5-to-utf-8</id>
+    <content type="html"><![CDATA[<p>環境 : MAC OS X 10.9.3</p>
+
+<p>```</p>
+
+<h1>-f 來源編碼 big5</h1>
+
+<h1>-t 目的編碼 utf-8</h1>
+
+<p>iconv -f big5 -t utf-8 Non-Stop.srt > Non-Stop.src
+```</p>
+
+<p>ref : <a href="http://blog.lyhdev.com/2012/12/mac-os-x-srt-big5-to-utf-8-iconv.html">http://blog.lyhdev.com/2012/12/mac-os-x-srt-big5-to-utf-8-iconv.html</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 Gsh 對多台 Server 下指令]]></title>

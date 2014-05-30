@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Eclipse on Mac OS X 10.9 - Life is Struggle</title>
+  <meta name="author" content="trully">
+
+  
+  <meta name="description" content="MAC os upgrade 到 10.9 後, 因為沒有 jre, 所以 eclipse 開不起來
+但下載 java 1.7 後, eclispe 居然說找不到 jre 1.6 解法如下 1
+vi /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://trully.github.io/blog/2014/05/30/eclipse-on-mac-os-x-10-dot-9">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Life is Struggle</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:trully.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Eclipse on Mac OS X 10.9</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-30T17:52:52+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>MAC os upgrade 到 10.9 後, 因為沒有 jre, 所以 eclipse 開不起來
+但下載 java 1.7 後, eclispe 居然說找不到 jre 1.6</p>
+
+<!--more-->
+
+
+<p>解法如下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vi /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Info.plist</span></code></pre></td></tr></table></div></figure>
+
+
+<p>把</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;key&gt;</span>JVMCapabilities<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'> <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>CommandLine<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!--這行換掉--&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>換成</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;key&gt;</span>JVMCapabilities<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'> <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--換成以下五行--&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>JNI<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>BundledApp<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>WebStart<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>Applets<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>CommandLine<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--換成以上五行--&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6">http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6</a></p>
+
+<br/>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">trully</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-30T17:52:52+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tool/'>TOOL</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/05/30/guan-bi-sublime-de-check-update/" title="Previous Post: 關閉 Sublime 的 check update">&laquo; 關閉 Sublime 的 check update</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/05/30/you-guan-nginx-de-streaming/" title="Next Post: 有關 Nginx 的 Streaming">有關 Nginx 的 Streaming &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(5)</a> <a href='/blog/categories/database' style='font-size: 124.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 112.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(5)</a> <a href='/blog/categories/mac' style='font-size: 136.0%'>mac(3)</a> <a href='/blog/categories/mysql' style='font-size: 112.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 112.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 124.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 136.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 148.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 148.0%'>TECHNICAL(4)</a> <a href='/blog/categories/tool' style='font-size: 148.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 112.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>WINDOWS(1)</a> </span>
+</section><section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (5)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (5)</a></li><li><a href='/blog/categories/mac/'>mac (3)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">使用 Sublime 的 Sftp</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/you-guan-nginx-de-streaming/">有關 Nginx 的 Streaming</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/eclipse-on-mac-os-x-10-dot-9/">Eclipse on Mac OS X 10.9</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/guan-bi-sublime-de-check-update/">關閉 Sublime 的 Check Update</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/30/shi-yong-iconv-jiang-zi-mu-dang-zhuan-ma-big5-to-utf-8/">使用 Iconv 將字幕檔轉碼 (Big5 to UTF-8)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/28/shi-yong-gsh-dui-duo-tai-server-xia-zhi-ling/">使用 Gsh 對多台 Server 下指令</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/li-yong-sed-zuo-zi-chuan-de-duo-bi-qu-dai/">利用 Sed 做字串的多筆取代</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/grep-bi-ji/">Grep 筆記</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/windows-bi-ji/">Windows 筆記</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/23/zai-vi-shu-ru-fu-hao/">在 Vi 輸入 ^[ 符號</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - trully -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TECHNICAL | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/technical/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-28T10:27:37+08:00</updated>
+  <updated>2014-05-30T18:32:21+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[有關 Nginx 的 Streaming]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/you-guan-nginx-de-streaming/"/>
+    <updated>2014-05-30T17:58:52+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/you-guan-nginx-de-streaming</id>
+    <content type="html"><![CDATA[<p>隨手記一下~</p>
+
+<!--more-->
+
+
+<p>不管 flash or html5 player, 當頻寬很低時(10KB)都播幾秒就跳結束了<br/>
+後來比對 vimeo 的 request header, 發覺他們的 response header 多了<br/>
+<strong>Connection: keep-alive</strong></p>
+
+<p>於是試著把 /home/nginx/conf/nginx.conf 裡的
+```</p>
+
+<h1>keepalive_timeout        0; 原本是 0</h1>
+
+<p>keepalive_timeout        20;
+```
+重啟後, 就都播得完了~</p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 增加分類側欄]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-28T10:27:37+08:00</updated>
+  <updated>2014-05-30T18:32:21+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,239 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Sublime 的 Sftp]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/shi-yong-sublime-de-sftp/"/>
+    <updated>2014-05-30T18:05:17+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/shi-yong-sublime-de-sftp</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<h2>安裝 sftp</h2>
+
+<ul>
+<li>ref : <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
+<li>安裝 Package Control
+
+<ol type="a">
+<li>把 console 打開 (ctrl + `)</li>
+<li>貼上</li>
+</ol>
+</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) </span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>cmd + shift + p, 來安裝 sftp 的 plugin</li>
+</ul>
+
+
+<br/>
+
+
+<h2>設定 sftp</h2>
+
+<ul>
+<li>ref : <a href="http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP">http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP</a></li>
+<li>設定 project (/Users/trully/Documents/proj-stage)</li>
+<li>SFTP &ndash;> Map to Remote</li>
+<li>設定以下項目</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"save_before_upload": true,
+</span><span class='line'>"upload_on_save": true,
+</span><span class='line'>"sync_down_on_open": true,
+</span><span class='line'>"confirm_sync": false,
+</span><span class='line'>"ignore_regexes”: 這我沒改, 因為直接用 transmit download 要的 code, folder, 就沒有這問題
+</span><span class='line'>"extra_list_connections": 4,
+</span><span class='line'>"preserve_modification_times": true, </span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>用 transmit 下載 remote 的 code (這裡不要用 SFTP &ndash;> Download Folder, 會很久)</li>
+</ul>
+
+
+<br/>
+
+
+<h2>破解 sftp</h2>
+
+<ul>
+<li>ref : <a href="http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri">http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri</a></li>
+</ul>
+
+
+<p>在
+<img src="http://2.share.photo.xuite.net/trully/12a4d1b/19084527/1029215020_o.jpg" alt="" />
+填入以下內容</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>    "email": "hello@mail.com",
+</span><span class='line'>    "product_key": "c07bee-4382d0-b0cdbf-286096-3fa296"
+</span><span class='line'>} </span></code></pre></td></tr></table></div></figure>
+
+
+<p>再重開 sublime 即可 (沒破解, save 10 次會出現叫你買的 dialog, 很煩)</p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[有關 Nginx 的 Streaming]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/you-guan-nginx-de-streaming/"/>
+    <updated>2014-05-30T17:58:52+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/you-guan-nginx-de-streaming</id>
+    <content type="html"><![CDATA[<p>隨手記一下~</p>
+
+<!--more-->
+
+
+<p>不管 flash or html5 player, 當頻寬很低時(10KB)都播幾秒就跳結束了<br/>
+後來比對 vimeo 的 request header, 發覺他們的 response header 多了<br/>
+<strong>Connection: keep-alive</strong></p>
+
+<p>於是試著把 /home/nginx/conf/nginx.conf 裡的</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#keepalive_timeout        0; 原本是 0
+</span><span class='line'>keepalive_timeout        20;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>重啟後, 就都播得完了~</p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse on Mac OS X 10.9]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/eclipse-on-mac-os-x-10-dot-9/"/>
+    <updated>2014-05-30T17:52:52+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/eclipse-on-mac-os-x-10-dot-9</id>
+    <content type="html"><![CDATA[<p>MAC os upgrade 到 10.9 後, 因為沒有 jre, 所以 eclipse 開不起來
+但下載 java 1.7 後, eclispe 居然說找不到 jre 1.6</p>
+
+<!--more-->
+
+
+<p>解法如下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vi /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Info.plist</span></code></pre></td></tr></table></div></figure>
+
+
+<p>把</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;key&gt;</span>JVMCapabilities<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'> <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>CommandLine<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!--這行換掉--&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>換成</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;key&gt;</span>JVMCapabilities<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'> <span class="nt">&lt;array&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--換成以下五行--&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>JNI<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>BundledApp<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>WebStart<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>Applets<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;string&gt;</span>CommandLine<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--換成以上五行--&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/array&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6">http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[關閉 Sublime 的 Check Update]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/guan-bi-sublime-de-check-update/"/>
+    <updated>2014-05-30T17:49:43+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/guan-bi-sublime-de-check-update</id>
+    <content type="html"><![CDATA[<p>版本 : 3052</p>
+
+<ol>
+<li>打開 Preference &ndash;> Settings &ndash; User</li>
+<li>加入</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"update_check": false,
+</span><span class='line'>"font_size": 18.0 </span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用 Iconv 將字幕檔轉碼 (Big5 to UTF-8)]]></title>
+    <link href="http://trully.github.io/blog/2014/05/30/shi-yong-iconv-jiang-zi-mu-dang-zhuan-ma-big5-to-utf-8/"/>
+    <updated>2014-05-30T17:33:18+08:00</updated>
+    <id>http://trully.github.io/blog/2014/05/30/shi-yong-iconv-jiang-zi-mu-dang-zhuan-ma-big5-to-utf-8</id>
+    <content type="html"><![CDATA[<p>環境 : MAC OS X 10.9.3</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># -f 來源編碼 big5
+</span><span class='line'># -t 目的編碼 utf-8
+</span><span class='line'>iconv -f big5 -t utf-8 Non-Stop.srt &gt; Non-Stop.src</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ref : <a href="http://blog.lyhdev.com/2012/12/mac-os-x-srt-big5-to-utf-8-iconv.html">http://blog.lyhdev.com/2012/12/mac-os-x-srt-big5-to-utf-8-iconv.html</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 Gsh 對多台 Server 下指令]]></title>
@@ -996,79 +1229,6 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
 <li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Article]]></title>
-    <link href="http://trully.github.io/blog/2014/01/09/first-article/"/>
-    <updated>2014-01-09T15:03:44+08:00</updated>
-    <id>http://trully.github.io/blog/2014/01/09/first-article</id>
-    <content type="html"><![CDATA[<p>this is my first article @ github by octopress
-你好</p>
-
-<ul>
-<li>line1</li>
-<li>line2</li>
-<li>line3</li>
-<li>line4</li>
-</ul>
-
-
-<p>code test</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git clone git@github.com:imathis/octopress.git # fork octopress</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>php test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">phpinfo</span><span class="p">();</span>
-</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>javascript test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;haha&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">aa</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>html test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;userid&quot;</span> <span class="na">id=</span><span class="s">&quot;userid&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/form&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>java tset</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">sun.java.util.*</span><span class="o">;</span>
-</span><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">ary</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;haha&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>
