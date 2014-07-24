@@ -9,8 +9,8 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="原本是參考這篇 http://blog.eddie.com.tw/2011/12/05/add-catetories-to-sidebar-in-octopress/ 但發現在 rake preview 會有重覆噴 category log 的問題
-在底下的留言發現有人解決, 而且把 code &hellip;">
+  <meta name="description" content="有以下二個方法 1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的 2.或在 code 裡宣告 1
+set_time_limit(int $seconds) # If set to zero, no time limit is imposed ref &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +64,117 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/07/php-chu-xian-maximum-execution-time-of-30-seconds-exceeded-de-jie-fa/">Php 出現 Maximum Execution Time of 30 Seconds Exceeded 的解法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-07T17:16:37+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有以下二個方法</p>
+
+<h4>1.修改 php.ini; 把 max_execution_time 的 30 改成自己想要的</h4>
+
+<h4>2.或在 code 裡宣告</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nb">set_time_limit</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$seconds</span><span class="p">)</span> <span class="c1"># If set to zero, no time limit is imposed</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br>
+
+
+<p>ref : <a href="http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6">http://registerboy.pixnet.net/blog/post/24489954-maximum-execution-time-of-30-seconds-exceeded-in%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/07/git-jian-yi-bi-ji/">Git 簡易筆記</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-07T16:31:03+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>環境設定</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config user.name trully
+</span><span class='line'>git config user.email username@email.com
+</span><span class='line'>git config --global user.name "trully"
+</span><span class='line'>git config --global user.email "username@email.com"
+</span><span class='line'>git config --global color.diff auto # git diff 要顯示顏色
+</span><span class='line'>git config --global color.status auto # git status 要顯示顏色
+</span><span class='line'>git config --global color.branch auto
+</span><span class='line'>git config --global color.log auto # git log --graph 會很漂亮
+</span><span class='line'>cat .git/config</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/03/07/git-jian-yi-bi-ji/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -138,7 +249,7 @@
   </header>
 
 
-  <div class="entry-content"><h4>查看執行中 sql 的方法</h4>
+  <div class="entry-content"><h4>1. 查看執行中 sql 的方法</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
@@ -148,7 +259,7 @@
 <br/>
 
 
-<h4>base64 encode 欄位 &ndash; encode()</h4>
+<h4>2. base64 encode 欄位 &ndash; encode()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -217,105 +328,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">用 GitHub 寫文章的步驟</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-21T14:06:26+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
-</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
-
-
-<p>會得到文章的檔名
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/21/title/">使用 Octopress 建立 Github Blog</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-21T10:54:27+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
-</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
-</span><span class='line'>git --version
-</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/21/title/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -330,13 +342,21 @@
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(5)</a> <a href='/blog/categories/database' style='font-size: 124.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 112.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(5)</a> <a href='/blog/categories/mac' style='font-size: 136.0%'>mac(3)</a> <a href='/blog/categories/mysql' style='font-size: 112.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 112.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 124.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 136.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 148.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 148.0%'>TECHNICAL(4)</a> <a href='/blog/categories/tool' style='font-size: 148.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 112.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>WINDOWS(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(6)</a> <a href='/blog/categories/database' style='font-size: 120.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 110.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 120.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(6)</a> <a href='/blog/categories/mac' style='font-size: 140.0%'>mac(4)</a> <a href='/blog/categories/mysql' style='font-size: 110.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 110.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 130.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(3)</a> <a href='/blog/categories/php' style='font-size: 140.0%'>php(4)</a> <a href='/blog/categories/programming' style='font-size: 140.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 140.0%'>TECHNICAL(4)</a> <a href='/blog/categories/technical' style='font-size: 110.0%'>TECHNICAL (1)</a> <a href='/blog/categories/tool' style='font-size: 140.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 110.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>WINDOWS(1)</a> <a href='/blog/categories/zf' style='font-size: 110.0%'>zf(1)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (5)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (5)</a></li><li><a href='/blog/categories/mac/'>mac (3)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (6)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (6)</a></li><li><a href='/blog/categories/mac/'>mac (4)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (3)</a></li><li><a href='/blog/categories/php/'>php (4)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL  (1)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li><li><a href='/blog/categories/zf/'>zf (1)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">測試 Zf, Adodb 連線 Pg 的記憶體使用情況</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/linux-zhi-ling-za-ji/">Linux 指令雜記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">使用 Sublime 的 Sftp</a>
@@ -368,14 +388,6 @@
     
       <li class="post">
         <a href="/blog/2014/03/23/grep-bi-ji/">Grep 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/windows-bi-ji/">Windows 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/zai-vi-shu-ru-fu-hao/">在 Vi 輸入 ^[ 符號</a>
       </li>
     
   </ul>

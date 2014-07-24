@@ -9,7 +9,7 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="解壓縮到指定資料夾 1
+  <meta name="description" content="1. 解壓縮到指定資料夾 1
 tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar -C 要大寫, 指定 output 到 /tmp/trully/test.tar ref : http://www. &hellip;">
   
 
@@ -90,7 +90,7 @@ tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar -C 要�
   </header>
 
 
-<div class="entry-content"><h3>解壓縮到指定資料夾</h3>
+<div class="entry-content"><h3>1. 解壓縮到指定資料夾</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar</span></code></pre></td></tr></table></div></figure>
@@ -105,7 +105,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h3>壓縮時不包含某些檔案</h3>
+<h3>2. 壓縮時不包含某些檔案</h3>
 
 <p>ex: 不包含 ./janny04369-data/xuite/album/<em> 與 ./janny04369-data/xuite/video/</em></p>
 
@@ -116,6 +116,33 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
+<h3>3. 把要 tar 的名單放到 list.txt 裡</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tar -T list.txt -cvf vlog.trully.2014050701.tar</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>application/modules/default/controllers/IndexController.php
+</span><span class='line'>application/modules/default/controllers/MediaController.php
+</span><span class='line'>application/modules/default/controllers/TrullyController.php
+</span><span class='line'>application/modules/default/models/MediaList.php
+</span><span class='line'>application/modules/default/models/Medium.php
+</span><span class='line'>application/modules/default/views/scripts/flash/playerrelated.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/_index_cat_movie.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/_index_promote.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/adv.phtml</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
 
 </div>
 
@@ -175,13 +202,21 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(5)</a> <a href='/blog/categories/database' style='font-size: 124.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 112.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(5)</a> <a href='/blog/categories/mac' style='font-size: 136.0%'>mac(3)</a> <a href='/blog/categories/mysql' style='font-size: 112.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 112.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 124.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 136.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 148.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 148.0%'>TECHNICAL(4)</a> <a href='/blog/categories/tool' style='font-size: 148.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 112.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>WINDOWS(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(6)</a> <a href='/blog/categories/database' style='font-size: 120.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 110.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 120.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(6)</a> <a href='/blog/categories/mac' style='font-size: 140.0%'>mac(4)</a> <a href='/blog/categories/mysql' style='font-size: 110.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 110.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 130.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(3)</a> <a href='/blog/categories/php' style='font-size: 140.0%'>php(4)</a> <a href='/blog/categories/programming' style='font-size: 140.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 140.0%'>TECHNICAL(4)</a> <a href='/blog/categories/technical' style='font-size: 110.0%'>TECHNICAL (1)</a> <a href='/blog/categories/tool' style='font-size: 140.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 110.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>WINDOWS(1)</a> <a href='/blog/categories/zf' style='font-size: 110.0%'>zf(1)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (5)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (5)</a></li><li><a href='/blog/categories/mac/'>mac (3)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (6)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (6)</a></li><li><a href='/blog/categories/mac/'>mac (4)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (3)</a></li><li><a href='/blog/categories/php/'>php (4)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL  (1)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li><li><a href='/blog/categories/zf/'>zf (1)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">測試 Zf, Adodb 連線 Pg 的記憶體使用情況</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/linux-zhi-ling-za-ji/">Linux 指令雜記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">使用 Sublime 的 Sftp</a>
@@ -213,14 +248,6 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
     
       <li class="post">
         <a href="/blog/2014/03/23/grep-bi-ji/">Grep 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/windows-bi-ji/">Windows 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/zai-vi-shu-ru-fu-hao/">在 Vi 輸入 ^[ 符號</a>
       </li>
     
   </ul>

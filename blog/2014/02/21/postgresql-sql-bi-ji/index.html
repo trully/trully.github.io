@@ -9,11 +9,11 @@
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="查看執行中 sql 的方法 1
-select * from pg_stat_activity base64 encode 欄位 &ndash; encode() 1
+  <meta name="description" content="1. 查看執行中 sql 的方法 1
+select * from pg_stat_activity 2. base64 encode 欄位 &ndash; encode() 1
 2
 3
-select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
+select encode(convert_to(fname,&#39;utf-8&#39;), &#39; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
   </header>
 
 
-<div class="entry-content"><h4>查看執行中 sql 的方法</h4>
+<div class="entry-content"><h4>1. 查看執行中 sql 的方法</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
@@ -103,7 +103,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>base64 encode 欄位 &ndash; encode()</h4>
+<h4>2. base64 encode 欄位 &ndash; encode()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -120,7 +120,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>取 hd &ndash; &amp;</h4>
+<h4>3. 取 hd &ndash; &amp;</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">fmt</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
@@ -130,7 +130,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+<h4>4. 取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -150,7 +150,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+<h4>5. 依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -170,7 +170,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+<h4>6. 依年份列出有在使用的人數 &ndash; date_trunc()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -190,7 +190,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+<h4>7. 檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -228,7 +228,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+<h4>8. 字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -246,14 +246,14 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+<h4>9.1 去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="k">on</span> <span class="p">(</span><span class="n">fieldname</span><span class="p">)</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablename</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+<h4>9.2 去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -269,7 +269,7 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 <br/>
 
 
-<h4>mysql 的 rownum</h4>
+<h4>10. mysql 的 rownum</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -279,6 +279,21 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
 
 
 <p>ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
+
+<br/>
+
+
+<h4>11. 在 navicat 裡啟用 transaction</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">begin</span><span class="p">;</span>
+</span><span class='line'><span class="c1">-- 之後的執行的 DML, 都要下 commit; 或 rollback; 才有作用</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
 </div>
 
 
@@ -337,13 +352,21 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
   
     <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(5)</a> <a href='/blog/categories/database' style='font-size: 124.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 112.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 124.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(5)</a> <a href='/blog/categories/mac' style='font-size: 136.0%'>mac(3)</a> <a href='/blog/categories/mysql' style='font-size: 112.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 112.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 136.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 124.0%'>pgsql(2)</a> <a href='/blog/categories/php' style='font-size: 136.0%'>php(3)</a> <a href='/blog/categories/programming' style='font-size: 148.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 148.0%'>TECHNICAL(4)</a> <a href='/blog/categories/tool' style='font-size: 148.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 112.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 112.0%'>WINDOWS(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/cmd' style='font-size: 160.0%'>cmd(6)</a> <a href='/blog/categories/database' style='font-size: 120.0%'>DATABASE(2)</a> <a href='/blog/categories/git' style='font-size: 110.0%'>git(1)</a> <a href='/blog/categories/github' style='font-size: 120.0%'>github(2)</a> <a href='/blog/categories/linux' style='font-size: 160.0%'>LINUX(6)</a> <a href='/blog/categories/mac' style='font-size: 140.0%'>mac(4)</a> <a href='/blog/categories/mysql' style='font-size: 110.0%'>mysql(1)</a> <a href='/blog/categories/nginx' style='font-size: 110.0%'>nginx(1)</a> <a href='/blog/categories/octopress' style='font-size: 130.0%'>octopress(3)</a> <a href='/blog/categories/pgsql' style='font-size: 130.0%'>pgsql(3)</a> <a href='/blog/categories/php' style='font-size: 140.0%'>php(4)</a> <a href='/blog/categories/programming' style='font-size: 140.0%'>PROGRAMMING(4)</a> <a href='/blog/categories/technical' style='font-size: 140.0%'>TECHNICAL(4)</a> <a href='/blog/categories/technical' style='font-size: 110.0%'>TECHNICAL (1)</a> <a href='/blog/categories/tool' style='font-size: 140.0%'>TOOL(4)</a> <a href='/blog/categories/vi' style='font-size: 110.0%'>vi(1)</a> <a href='/blog/categories/windows' style='font-size: 110.0%'>WINDOWS(1)</a> <a href='/blog/categories/zf' style='font-size: 110.0%'>zf(1)</a> </span>
 </section><section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (5)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (5)</a></li><li><a href='/blog/categories/mac/'>mac (3)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (2)</a></li><li><a href='/blog/categories/php/'>php (3)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/cmd/'>cmd (6)</a></li><li><a href='/blog/categories/database/'>DATABASE (2)</a></li><li><a href='/blog/categories/git/'>git (1)</a></li><li><a href='/blog/categories/github/'>github (2)</a></li><li><a href='/blog/categories/linux/'>LINUX (6)</a></li><li><a href='/blog/categories/mac/'>mac (4)</a></li><li><a href='/blog/categories/mysql/'>mysql (1)</a></li><li><a href='/blog/categories/nginx/'>nginx (1)</a></li><li><a href='/blog/categories/octopress/'>octopress (3)</a></li><li><a href='/blog/categories/pgsql/'>pgsql (3)</a></li><li><a href='/blog/categories/php/'>php (4)</a></li><li><a href='/blog/categories/programming/'>PROGRAMMING (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL (4)</a></li><li><a href='/blog/categories/technical/'>TECHNICAL  (1)</a></li><li><a href='/blog/categories/tool/'>TOOL (4)</a></li><li><a href='/blog/categories/vi/'>vi (1)</a></li><li><a href='/blog/categories/windows/'>WINDOWS (1)</a></li><li><a href='/blog/categories/zf/'>zf (1)</a></li></ul>
 </section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">測試 Zf, Adodb 連線 Pg 的記憶體使用情況</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/24/linux-zhi-ling-za-ji/">Linux 指令雜記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">使用 Sublime 的 Sftp</a>
@@ -375,14 +398,6 @@ select encode(convert_to(fname,&#39;utf-8&#39;), &#39;base64&# &hellip;">
     
       <li class="post">
         <a href="/blog/2014/03/23/grep-bi-ji/">Grep 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/windows-bi-ji/">Windows 筆記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/23/zai-vi-shu-ru-fu-hao/">在 Vi 輸入 ^[ 符號</a>
       </li>
     
   </ul>

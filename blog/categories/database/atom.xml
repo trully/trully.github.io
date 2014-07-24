@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DATABASE | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-30T18:32:21+08:00</updated>
+  <updated>2014-07-24T15:29:07+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -18,7 +18,7 @@
     <link href="http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji/"/>
     <updated>2014-02-21T14:48:32+08:00</updated>
     <id>http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji</id>
-    <content type="html"><![CDATA[<h4>查看執行中 sql 的方法</h4>
+    <content type="html"><![CDATA[<h4>1. 查看執行中 sql 的方法</h4>
 
 <p><code>sql
 select * from pg_stat_activity
@@ -27,7 +27,7 @@ select * from pg_stat_activity
 <br/>
 
 
-<h4>base64 encode 欄位 &ndash; encode()</h4>
+<h4>2. base64 encode 欄位 &ndash; encode()</h4>
 
 <p><code>sql
 select encode(convert_to(fname,'utf-8'), 'base64') as url
@@ -41,7 +41,7 @@ select encode(convert_to(fname,'utf-8'), 'base64') as url
 <br/>
 
 
-<h4>取 hd &ndash; &amp;</h4>
+<h4>3. 取 hd &ndash; &amp;</h4>
 
 <p><code>sql
 select * from media where fmt &amp; 2 = 2
@@ -50,7 +50,7 @@ select * from media where fmt &amp; 2 = 2
 <br/>
 
 
-<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+<h4>4. 取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
 
 <p><code>sql
 select now()::date, media_id, title
@@ -64,7 +64,7 @@ select now()::date, media_id, title
 <br/>
 
 
-<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+<h4>5. 依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
 
 <p><code>sql
 select count(mid), date_trunc('month', ctime) as month
@@ -78,7 +78,7 @@ select count(mid), date_trunc('month', ctime) as month
 <br/>
 
 
-<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+<h4>6. 依年份列出有在使用的人數 &ndash; date_trunc()</h4>
 
 <p><code>sql
 select count(uid), date_trunc('year', last_upload_time) as total
@@ -92,7 +92,7 @@ select count(uid), date_trunc('year', last_upload_time) as total
 <br/>
 
 
-<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+<h4>7. 檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
 
 <p>``` sql
 select media_id
@@ -118,7 +118,7 @@ select media_id
 <br/>
 
 
-<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+<h4>8. 字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
 
 <p><code>sql
 select replace(fname, '.flv', '.mp4')||row_number() OVER (ORDER BY title)||'.mp4' as cmd
@@ -131,13 +131,13 @@ select replace(fname, '.flv', '.mp4')||row_number() OVER (ORDER BY title)||'.mp4
 <br/>
 
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+<h4>9.1 去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
 
 <p><code>sql
 select distinct on (fieldname) * from tablename
 </code></p>
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+<h4>9.2 去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
 
 <p><code>sql
 select name, sex, born_year, born_date, mobile, zone, addr, email
@@ -149,13 +149,26 @@ ref : <a href="http://www.jinnsblog.com/2013/09/sql-distinct-group-by-for-mysql-
 <br/>
 
 
-<h4>mysql 的 rownum</h4>
+<h4>10. mysql 的 rownum</h4>
 
 <p><code>sql
 select distinct mobile, @rownum:=@rownum+1 AS 'rownum', name, sex, born_year, born_date, mobile, zone, addr, email
   from receipt_reg, (SELECT @rownum:=0) r
 </code>
 ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
+
+<br/>
+
+
+<h4>11. 在 navicat 裡啟用 transaction</h4>
+
+<p><code>sql
+begin;
+-- 之後的執行的 DML, 都要下 commit; 或 rollback; 才有作用
+</code></p>
+
+<br/>
+
 ]]></content>
   </entry>
   

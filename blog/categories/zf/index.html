@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用 Sublime 的 Sftp - Life is Struggle</title>
+  <title>Category: Zf - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="安裝 sftp ref : https://sublime.wbond.net/installation
-安裝 Package Control 把 console 打開 (ctrl + `)
-貼上 1
-import urllib.request,os; pf = 'Package Control &hellip;">
+  <meta name="description" content="Category: zf">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io/blog/2014/05/30/shi-yong-sublime-de-sftp">
+  <link rel="canonical" href="http://trully.github.ioblog/categories/zf">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -65,171 +62,35 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">使用 Sublime 的 Sftp</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-30T18:05:17+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Zf</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-<div class="entry-content"><!--more-->
+
+  
+  <h2>2014</h2>
+
+<article>
+  
+<h1><a href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">測試 Zf, Adodb 連線 Pg 的記憶體使用情況</a></h1>
+<time datetime="2014-07-24T15:16:59+08:00" pubdate><span class='month'>Jul</span> <span class='day'>24</span> <span class='year'>2014</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/technical/'>TECHNICAL </a>, <a class='category' href='/blog/categories/pgsql/'>pgsql</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/zf/'>zf</a></span>
+</footer>
 
 
-<h2>安裝 sftp</h2>
-
-<ul>
-<li>ref : <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
-<li>安裝 Package Control
-
-<ol type="a">
-<li>把 console 打開 (ctrl + `)</li>
-<li>貼上</li>
-</ol>
-</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>cmd + shift + p, 來安裝 sftp 的 plugin</li>
-</ul>
-
-
-<br/>
-
-
-<h2>設定 sftp</h2>
-
-<ul>
-<li>ref : <a href="http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP">http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP</a></li>
-<li>設定 project (/Users/trully/Documents/proj-stage)</li>
-<li>SFTP &ndash;> Map to Remote</li>
-<li>設定以下項目</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"save_before_upload": true,
-</span><span class='line'>"upload_on_save": true,
-</span><span class='line'>"sync_down_on_open": true,
-</span><span class='line'>"confirm_sync": false,
-</span><span class='line'>"ignore_regexes”: 這我沒改, 因為直接用 transmit download 要的 code, folder, 就沒有這問題
-</span><span class='line'>"extra_list_connections": 4,
-</span><span class='line'>"preserve_modification_times": true, </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>用 transmit 下載 remote 的 code (這裡不要用 SFTP &ndash;> Download Folder, 會很久)</li>
-</ul>
-
-
-<br/>
-
-
-<h2>破解 sftp</h2>
-
-<ul>
-<li>ref : <a href="http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri">http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri</a></li>
-</ul>
-
-
-<p>在
-<img src="http://2.share.photo.xuite.net/trully/12a4d1b/19084527/1029215020_o.jpg" alt="" />
-填入以下內容</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>    "email": "hello@mail.com",
-</span><span class='line'>    "product_key": "c07bee-4382d0-b0cdbf-286096-3fa296"
-</span><span class='line'>} </span></code></pre></td></tr></table></div></figure>
-
-
-<p>再重開 sublime 即可 (沒破解, save 10 次會出現叫你買的 dialog, 很煩)</p>
-
-<br/>
+</article>
 
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">trully</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-30T18:05:17+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/tool/'>TOOL</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/05/30/you-guan-nginx-de-streaming/" title="Previous Post: 有關 Nginx 的 Streaming">&laquo; 有關 Nginx 的 Streaming</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/07/24/linux-zhi-ling-za-ji/" title="Next Post: Linux 指令雜記">Linux 指令雜記 &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
 </div>

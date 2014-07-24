@@ -5,14 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>使用 Sublime 的 Sftp - Life is Struggle</title>
+  <title>Linux 指令雜記 - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="安裝 sftp ref : https://sublime.wbond.net/installation
-安裝 Package Control 把 console 打開 (ctrl + `)
-貼上 1
-import urllib.request,os; pf = 'Package Control &hellip;">
+  <meta name="description" content="1. 更新 /etc/hosts, 想要立即生效, 執行 1
+source /etc/hosts 2. 在 mac os 刪除無回應的程式 ex:Coccinellida 1
+ps -A | grep Coccinellida | awk '{print $1}' | xargs kill -9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +20,7 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io/blog/2014/05/30/shi-yong-sublime-de-sftp">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/07/24/linux-zhi-ling-za-ji">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -69,7 +68,7 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   
   <header>
     
-      <h1 class="entry-title">使用 Sublime 的 Sftp</h1>
+      <h1 class="entry-title">Linux 指令雜記</h1>
     
     
       <p class="meta">
@@ -85,98 +84,55 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   
 
 
-<time datetime="2014-05-30T18:05:17+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+<time datetime="2014-07-24T14:49:04+08:00" pubdate data-updated="true">Jul 24<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><!--more-->
-
-
-<h2>安裝 sftp</h2>
-
-<ul>
-<li>ref : <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
-<li>安裝 Package Control
-
-<ol type="a">
-<li>把 console 打開 (ctrl + `)</li>
-<li>貼上</li>
-</ol>
-</li>
-</ul>
-
+<div class="entry-content"><h4>1. 更新 /etc/hosts, 想要立即生效, 執行</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>cmd + shift + p, 來安裝 sftp 的 plugin</li>
-</ul>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source /etc/hosts</span></code></pre></td></tr></table></div></figure>
 
 
 <br/>
 
 
-<h2>設定 sftp</h2>
-
-<ul>
-<li>ref : <a href="http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP">http://wbond.net/sublime_packages/sftp/sidebar#SublimeSFTP</a></li>
-<li>設定 project (/Users/trully/Documents/proj-stage)</li>
-<li>SFTP &ndash;> Map to Remote</li>
-<li>設定以下項目</li>
-</ul>
-
+<h4>2. 在 mac os 刪除無回應的程式 ex:Coccinellida</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"save_before_upload": true,
-</span><span class='line'>"upload_on_save": true,
-</span><span class='line'>"sync_down_on_open": true,
-</span><span class='line'>"confirm_sync": false,
-</span><span class='line'>"ignore_regexes”: 這我沒改, 因為直接用 transmit download 要的 code, folder, 就沒有這問題
-</span><span class='line'>"extra_list_connections": 4,
-</span><span class='line'>"preserve_modification_times": true, </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ps -A | grep Coccinellida | awk '{print $1}' | xargs kill -9</span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>用 transmit 下載 remote 的 code (這裡不要用 SFTP &ndash;> Download Folder, 會很久)</li>
-</ul>
+<!--more-->
 
 
 <br/>
 
 
-<h2>破解 sftp</h2>
-
-<ul>
-<li>ref : <a href="http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri">http://xiaosong.me/share/reserved-sublime-text2-svn-sftp-plugin-ri</a></li>
-</ul>
-
-
-<p>在
-<img src="http://2.share.photo.xuite.net/trully/12a4d1b/19084527/1029215020_o.jpg" alt="" />
-填入以下內容</p>
+<h4>3. awk 的 sample</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>    "email": "hello@mail.com",
-</span><span class='line'>    "product_key": "c07bee-4382d0-b0cdbf-286096-3fa296"
-</span><span class='line'>} </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat log.log | awk 'BEGIN{FS=":"}; {print $2}' &gt; log2.log</span></code></pre></td></tr></table></div></figure>
 
 
-<p>再重開 sublime 即可 (沒破解, save 10 次會出現叫你買的 dialog, 很煩)</p>
+<br/>
+
+
+<h4>4. 用 ps 查看 process 的幾個方法</h4>
+
+<p>4.1 pgrep -f CloudboxConsumer.php (僅列出 pid)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.06.png?_subject_uid=33912440&amp;w=AACMCOlJ1dNRulEhI7N8k4yliJcoH_Q00Up1pvBb1gzfLA" alt="" /></p>
+
+<p>4.2 ps aux | grep CloudboxConsumer.php (可以查看佔用的 memory)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.23.png?_subject_uid=33912440&amp;w=AAAyRlheBYkjpPAdR8d8Ml03t8DTBhSxqe6i2lXPQEhwGQ" alt="" />
+VSZ : 該 process 使用掉的虛擬記憶體量 (Kbytes) (值: 51240, 93568 的部份)<br/>
+RSS : 該 process 佔用的固定的記憶體量 (Kbytes) (值: 448, 9120 的部份)</p>
+
+<p>4.3 ps -ef | grep CloudboxConsumer.php<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.41.png?_subject_uid=33912440&amp;w=AADTTBC4z8GoMCnSR8Wi1kV9JbSe89TeLdlxogg0TveNWA" alt="" /></p>
 
 <br/>
 
@@ -202,12 +158,12 @@ import urllib.request,os; pf = 'Package Control &hellip;">
   
 
 
-<time datetime="2014-05-30T18:05:17+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
+<time datetime="2014-07-24T14:49:04+08:00" pubdate data-updated="true">Jul 24<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/tool/'>TOOL</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
+    <a class='category' href='/blog/categories/linux/'>LINUX</a>, <a class='category' href='/blog/categories/cmd/'>cmd</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
   
 </span>
 
@@ -223,10 +179,10 @@ import urllib.request,os; pf = 'Package Control &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/05/30/you-guan-nginx-de-streaming/" title="Previous Post: 有關 Nginx 的 Streaming">&laquo; 有關 Nginx 的 Streaming</a>
+        <a class="basic-alignment left" href="/blog/2014/05/30/shi-yong-sublime-de-sftp/" title="Previous Post: 使用 sublime 的 sftp">&laquo; 使用 sublime 的 sftp</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/07/24/linux-zhi-ling-za-ji/" title="Next Post: Linux 指令雜記">Linux 指令雜記 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/" title="Next Post: 測試 zf, adodb 連線 pg 的記憶體使用情況">測試 zf, adodb 連線 pg 的記憶體使用情況 &raquo;</a>
       
     </p>
   </footer>

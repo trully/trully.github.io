@@ -4,7 +4,7 @@
   <title><![CDATA[Life is Struggle]]></title>
   <link href="http://trully.github.io/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-30T18:32:21+08:00</updated>
+  <updated>2014-07-24T15:29:07+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[測試 Zf, Adodb 連線 Pg 的記憶體使用情況]]></title>
+    <link href="http://trully.github.io/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/"/>
+    <updated>2014-07-24T15:16:59+08:00</updated>
+    <id>http://trully.github.io/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<p>測試 100,000 筆資料</p>
+
+<h4>1. 全部使用 adodb (create connection &amp; query data)</h4>
+
+<p>記憶體目前用掉 1,870,736 ; 最多用掉 1,925,872 ; spend 8.2004950046539 sec.<br/>
+記憶體目前用掉 1,871,400 ; 最多用掉 1,931,320 ; spend 73.63036608696 sec.</p>
+
+<h4>2. 全部使用 adodb, 但 include zf 所需要的東西</h4>
+
+<p>記憶體目前用掉 7,469,520 ; 最多用掉 7,535,048 ; spend 8.332573890686 sec.<br/>
+記憶體目前用掉 6,362,752 ; 最多用掉 6,431,688 ; spend 81.987900018692 sec.</p>
+
+<h4>3. 使用 ado 建立 connection, 使用 zf query data</h4>
+
+<p>記憶體目前用掉 8,403,432 ; 最多用掉 8,689,672 ; spend 16.01734495163 sec.<br/>
+記憶體目前用掉 8,404,256 ; 最多用掉 8,695,968 ; spend 153.99401402473 sec.</p>
+
+<h4>4. 全部使用 zendframe work (create connection &amp; query data)</h4>
+
+<p>記憶體目前用掉 84,069,368 ; 最多用掉  84,092,800 ; spend 10.299237966537 sec.<br/>
+記憶體目前用掉 84,072,296 ; 最多用掉 161,899,552 ; spend 101.24145317078 sec. 101211</p>
+
+<p>結果實作時, 連一天份的 multimedia media 都跑不完 memory 就爆了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in .../library/Zend/Cache/Core.php on line 312</span></code></pre></td></tr></table></div></figure>
+
+
+<p>看起來跟 cache 有關, 所以把用到的 model 的 cache 全關了再重跑一次, 就順利執行完了 (4013 筆)</p>
+
+<p>看起來跑大量資料, 每次都要去調 model 不用 cache 也很麻煩,</p>
+
+<p>結論 => 使用 adodb + 自己兜 sql, 不要使用任何 zendframe work 的東西, 這樣最省 memory</p>
+
+<br/>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 指令雜記]]></title>
+    <link href="http://trully.github.io/blog/2014/07/24/linux-zhi-ling-za-ji/"/>
+    <updated>2014-07-24T14:49:04+08:00</updated>
+    <id>http://trully.github.io/blog/2014/07/24/linux-zhi-ling-za-ji</id>
+    <content type="html"><![CDATA[<h4>1. 更新 /etc/hosts, 想要立即生效, 執行</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source /etc/hosts</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>2. 在 mac os 刪除無回應的程式 ex:Coccinellida</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ps -A | grep Coccinellida | awk '{print $1}' | xargs kill -9</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>3. awk 的 sample</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat log.log | awk 'BEGIN{FS=":"}; {print $2}' &gt; log2.log</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
+
+<h4>4. 用 ps 查看 process 的幾個方法</h4>
+
+<p>4.1 pgrep -f CloudboxConsumer.php (僅列出 pid)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.06.png?_subject_uid=33912440&amp;w=AACMCOlJ1dNRulEhI7N8k4yliJcoH_Q00Up1pvBb1gzfLA" alt="" /></p>
+
+<p>4.2 ps aux | grep CloudboxConsumer.php (可以查看佔用的 memory)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.23.png?_subject_uid=33912440&amp;w=AAAyRlheBYkjpPAdR8d8Ml03t8DTBhSxqe6i2lXPQEhwGQ" alt="" />
+VSZ : 該 process 使用掉的虛擬記憶體量 (Kbytes) (值: 51240, 93568 的部份)<br/>
+RSS : 該 process 佔用的固定的記憶體量 (Kbytes) (值: 448, 9120 的部份)</p>
+
+<p>4.3 ps -ef | grep CloudboxConsumer.php<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.41.png?_subject_uid=33912440&amp;w=AADTTBC4z8GoMCnSR8Wi1kV9JbSe89TeLdlxogg0TveNWA" alt="" /></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 Sublime 的 Sftp]]></title>
@@ -453,7 +553,7 @@
     <link href="http://trully.github.io/blog/2014/03/22/r-bi-ji/"/>
     <updated>2014-03-22T12:15:50+08:00</updated>
     <id>http://trully.github.io/blog/2014/03/22/r-bi-ji</id>
-    <content type="html"><![CDATA[<h3>解壓縮到指定資料夾</h3>
+    <content type="html"><![CDATA[<h3>1. 解壓縮到指定資料夾</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar</span></code></pre></td></tr></table></div></figure>
@@ -468,7 +568,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h3>壓縮時不包含某些檔案</h3>
+<h3>2. 壓縮時不包含某些檔案</h3>
 
 <p>ex: 不包含 ./janny04369-data/xuite/album/<em> 與 ./janny04369-data/xuite/video/</em></p>
 
@@ -479,6 +579,33 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
+<h3>3. 把要 tar 的名單放到 list.txt 裡</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>tar -T list.txt -cvf vlog.trully.2014050701.tar</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>application/modules/default/controllers/IndexController.php
+</span><span class='line'>application/modules/default/controllers/MediaController.php
+</span><span class='line'>application/modules/default/controllers/TrullyController.php
+</span><span class='line'>application/modules/default/models/MediaList.php
+</span><span class='line'>application/modules/default/models/Medium.php
+</span><span class='line'>application/modules/default/views/scripts/flash/playerrelated.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/_index_cat_movie.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/_index_promote.phtml
+</span><span class='line'>application/modules/default/views/scripts/index/adv.phtml</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
 
 ]]></content>
   </entry>
@@ -787,7 +914,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
     <link href="http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji/"/>
     <updated>2014-02-21T14:48:32+08:00</updated>
     <id>http://trully.github.io/blog/2014/02/21/postgresql-sql-bi-ji</id>
-    <content type="html"><![CDATA[<h4>查看執行中 sql 的方法</h4>
+    <content type="html"><![CDATA[<h4>1. 查看執行中 sql 的方法</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_stat_activity</span>
@@ -797,7 +924,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>base64 encode 欄位 &ndash; encode()</h4>
+<h4>2. base64 encode 欄位 &ndash; encode()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -814,7 +941,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>取 hd &ndash; &amp;</h4>
+<h4>3. 取 hd &ndash; &amp;</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">fmt</span> <span class="o">&amp;</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
@@ -824,7 +951,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
+<h4>4. 取出當日的資料 &ndash; now()::date, interval &lsquo;1h&rsquo; 是指當天的 01:00</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -844,7 +971,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
+<h4>5. 依月份列出上傳量, 由 2012-10 開始算 &ndash; date_trunc()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -864,7 +991,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>依年份列出有在使用的人數 &ndash; date_trunc()</h4>
+<h4>6. 依年份列出有在使用的人數 &ndash; date_trunc()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -884,7 +1011,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
+<h4>7. 檢查 wretch 來的, 是否有重覆的 media &ndash; not in, min(), group by</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -922,7 +1049,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
+<h4>8. 字串取代 &ndash; &mdash;row_number() OVER / 在結果加上序號 &ndash; replace()</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -940,14 +1067,14 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
+<h4>9.1 去除重覆的資料 (for 抽獎應用) &ndash; distinct on</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="k">distinct</span> <span class="k">on</span> <span class="p">(</span><span class="n">fieldname</span><span class="p">)</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tablename</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4>去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
+<h4>9.2 去除重覆的資料 (for 抽獎應用) &ndash; mysql, 利用 group by</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -963,7 +1090,7 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 <br/>
 
 
-<h4>mysql 的 rownum</h4>
+<h4>10. mysql 的 rownum</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -973,6 +1100,21 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 
 
 <p>ref : <a href="http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq">http://ithelp.ithome.com.tw/question/10136053?tag=ithome.nq</a></p>
+
+<br/>
+
+
+<h4>11. 在 navicat 裡啟用 transaction</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">begin</span><span class="p">;</span>
+</span><span class='line'><span class="c1">-- 之後的執行的 DML, 都要下 commit; 或 rollback; 才有作用</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<br/>
+
 ]]></content>
   </entry>
   
@@ -1020,216 +1162,6 @@ ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtod
 
 
 <p>ref : <a href="http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/">http://www.rhyous.com/2010/09/10/how-to-log-all-sql-statements-in-postgresql-running-on-freebsd/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[用 GitHub 寫文章的步驟]]></title>
-    <link href="http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou/"/>
-    <updated>2014-02-21T14:06:26+08:00</updated>
-    <id>http://trully.github.io/blog/2014/02/21/yong-github-xie-wen-zhang-de-bu-zou</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ~/apps/octopress
-</span><span class='line'>rake new_post</span></code></pre></td></tr></table></div></figure>
-
-
-<p>會得到文章的檔名
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.05.52.png?_subject_uid=33912440&amp;w=AADM-OzBAPShKp2JZR0hLNaLp78DnA1Aera34urEixKWlg" alt="" /></p>
-
-<!--more-->
-
-
-<p>再用 Mou 或 vi 編輯內容</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>open -a Mou source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>open source/_posts/2014-01-09-first-article.markdown 
-</span><span class='line'># or
-</span><span class='line'>vi source/_posts/2014-01-09-first-article.markdown
-</span><span class='line'># 可以打開 Mou 的說明頁參考 markdown 語法
-</span><span class='line'>open /Applications/Mou.app/Contents/Resources/help.md</span></code></pre></td></tr></table></div></figure>
-
-
-<p>內容 sample</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: post
-</span><span class='line'>title: "first article"
-</span><span class='line'>date: 2014-01-09 15:03:44 +0800
-</span><span class='line'>comments: true
-</span><span class='line'>categories: 'Technical'
-</span><span class='line'>tags: ['github', 'octopress']
-</span><span class='line'>---
-</span><span class='line'>this is my first article @ github by octopress
-</span><span class='line'>* line1
-</span><span class='line'>* line2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>文章寫完後執行</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate # 沒做似乎也可以
-</span><span class='line'>rake preview # for local preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>沒問題的話就 push 到 github</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m "first article"
-</span><span class='line'>git push origin source
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>到線上看結果
-<a href="http://trully.github.io/">http://trully.github.io/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用 Octopress 建立 Github Blog]]></title>
-    <link href="http://trully.github.io/blog/2014/02/21/title/"/>
-    <updated>2014-02-21T10:54:27+08:00</updated>
-    <id>http://trully.github.io/blog/2014/02/21/title</id>
-    <content type="html"><![CDATA[<h3>1. 安裝 git &amp; ruby &ndash; 以下是我用的版本</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby --version
-</span><span class='line'>ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
-</span><span class='line'>git --version
-</span><span class='line'>git version 1.8.3.4 (Apple Git-47)</span></code></pre></td></tr></table></div></figure>
-
-
-<!--more-->
-
-
-<br/>
-
-
-<h3>2. 安裝 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/trully/apps
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
-
-
-<p>此時的 branch 是 master
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.06.46.png?_subject_uid=33912440&amp;w=AACAf1-mUPcA5dU-VP7AKL2QFqv3mPwAs-DSkVcN3AvSdA" alt="" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sduo gem install bundler
-</span><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
-
-
-<br/>
-
-
-<h3>3. 在 GitHub 建立 repository</h3>
-
-<ol>
-<li>連到 <a href="https://github.com/new">https://github.com/new</a></li>
-<li>建立名為 <strong>trully.github.io</strong> 的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.12.23.png?_subject_uid=33912440&amp;w=AADHEPkwrct4AZ7PITVbVHGOmc-RUlgdN3U3z8tz11vYpw" alt="" /></li>
-</ol>
-
-
-<br/>
-
-
-<h3>4. 設定 Octopress</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vi _config.yml</span></code></pre></td></tr></table></div></figure>
-
-
-<p>先只改 <strong>Main Configs</strong> 的部份; 這裡的 url 要改成剛才建的 repository
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.16.57.png?_subject_uid=33912440&amp;w=AABfELhGqDYucduD-oZYFGr_A9cThUa_BD3Qib1hmB6W6w" alt="" /></p>
-
-<br/>
-
-
-<h3>5. deploy 到 GitHub</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>repository 輸入 : <strong>git@github.com:trully/trully.github.io.git</strong>
-成功的話, 此時的 branch 會變成 source, 可以下 <strong>git remote -v</strong> 看一下
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2014.20.34.png?_subject_uid=33912440&amp;w=AABptXJVNhNi8zUG2aBug8zs0AlrEO2qIs6svDmhaXEhpg" alt="" /><br/>
-這裡做<br/>
-1. 將 branch 從 master 切換到 source<br/>
-2. 建立 _deploy 目錄, 用來放 deploy 到 master branch 的內容 (client 這邊是 source, 但 push 到 github 的 master)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然後把 source commit 上去</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add .
-</span><span class='line'>git commit -m 'initinal github blog'
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
-
-
-<p>一切順利的話, 約十分鐘後連到 <a href="http://trully.github.io">http://trully.github.io</a> 會自到以下的畫面
-<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-01-09%2015.02.57.png?_subject_uid=33912440&amp;w=AAArMN71AoovTt9Yh8JHthSQl0xw-d0BuFoI8QaslYZNtw" alt="" /></p>
-
-<p>若要在 client side 先 preview 可以下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然後打開 <a href="http://localhost:4000/">http://localhost:4000/</a></p>
-
-<br/>
-
-
-<h4>Reference</h4>
-
-<ul>
-<li><a href="http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/">http://beyondvincent.com/blog/2013/08/03/108-creating-a-github-blog-using-octopress/</a></li>
-<li><a href="http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/">http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/</a></li>
-<li><a href="https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#">https://docs.google.com/document/d/16MUnoknVFlmXQRPA4KAvX7PTTZxWZCH1-6OFUCutxQE/edit#</a> (之前有成功裝在 pi 上 (pi 上用 jekyll))</li>
-<li><a href="http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/">http://theloverz.me/tutorials/2013/08/24/use-github-and-jekyll-to-establish-blog/</a> (照作但失敗)</li>
-</ul>
-
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cmd | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/cmd/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-05-30T18:32:21+08:00</updated>
+  <updated>2014-07-24T15:29:07+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 指令雜記]]></title>
+    <link href="http://trully.github.io/blog/2014/07/24/linux-zhi-ling-za-ji/"/>
+    <updated>2014-07-24T14:49:04+08:00</updated>
+    <id>http://trully.github.io/blog/2014/07/24/linux-zhi-ling-za-ji</id>
+    <content type="html"><![CDATA[<h4>1. 更新 /etc/hosts, 想要立即生效, 執行</h4>
+
+<p><code>
+source /etc/hosts
+</code></p>
+
+<br/>
+
+
+<h4>2. 在 mac os 刪除無回應的程式 ex:Coccinellida</h4>
+
+<p><code>
+ps -A | grep Coccinellida | awk '{print $1}' | xargs kill -9
+</code></p>
+
+<!--more-->
+
+
+<br/>
+
+
+<h4>3. awk 的 sample</h4>
+
+<p><code>
+cat log.log | awk 'BEGIN{FS=":"}; {print $2}' &gt; log2.log
+</code></p>
+
+<br/>
+
+
+<h4>4. 用 ps 查看 process 的幾個方法</h4>
+
+<p>4.1 pgrep -f CloudboxConsumer.php (僅列出 pid)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.06.png?_subject_uid=33912440&amp;w=AACMCOlJ1dNRulEhI7N8k4yliJcoH_Q00Up1pvBb1gzfLA" alt="" /></p>
+
+<p>4.2 ps aux | grep CloudboxConsumer.php (可以查看佔用的 memory)<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.23.png?_subject_uid=33912440&amp;w=AAAyRlheBYkjpPAdR8d8Ml03t8DTBhSxqe6i2lXPQEhwGQ" alt="" />
+VSZ : 該 process 使用掉的虛擬記憶體量 (Kbytes) (值: 51240, 93568 的部份)<br/>
+RSS : 該 process 佔用的固定的記憶體量 (Kbytes) (值: 448, 9120 的部份)</p>
+
+<p>4.3 ps -ef | grep CloudboxConsumer.php<br/>
+<img src="https://dl-web.dropbox.com/get/Public/pic/Screenshot%202014-07-24%2015.02.41.png?_subject_uid=33912440&amp;w=AADTTBC4z8GoMCnSR8Wi1kV9JbSe89TeLdlxogg0TveNWA" alt="" /></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[使用 Iconv 將字幕檔轉碼 (Big5 to UTF-8)]]></title>
@@ -149,39 +202,6 @@ grep -Ri getInfo * # i 表示不分大小寫
 </code></p>
 
 <br/>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tar 筆記]]></title>
-    <link href="http://trully.github.io/blog/2014/03/22/r-bi-ji/"/>
-    <updated>2014-03-22T12:15:50+08:00</updated>
-    <id>http://trully.github.io/blog/2014/03/22/r-bi-ji</id>
-    <content type="html"><![CDATA[<h3>解壓縮到指定資料夾</h3>
-
-<p><code>
-tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar
-</code>
--C 要大寫, 指定 output 到 /tmp/trully/test.tar <br/>
-ref : <a href="http://www.arthurtoday.com/2010/09/tar.html">http://www.arthurtoday.com/2010/09/tar.html</a></p>
-
-<!--more-->
-
-
-<br/>
-
-
-<h3>壓縮時不包含某些檔案</h3>
-
-<p>ex: 不包含 ./janny04369-data/xuite/album/<em> 與 ./janny04369-data/xuite/video/</em>
-<code>
-tar -cvf /tmp/trully/wretch3.tar ./janny04369-data --exclude="./janny04369-data/xuite/album/*" --exclude="./janny04369-data/xuite/video/*”
-</code></p>
-
-<br/>
-
-
 
 ]]></content>
   </entry>
