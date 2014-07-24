@@ -6,7 +6,7 @@ comments: true
 categories: ['LINUX', 'cmd']
 ---
 
-### 解壓縮到指定資料夾
+### 1. 解壓縮到指定資料夾
 ```
 tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar
 ```
@@ -14,17 +14,26 @@ tar -C /tmp/trully/test.tar -xvf /home/www/library/Util/htmlpurifier.tar
 ref : http://www.arthurtoday.com/2010/09/tar.html
 <!--more--><br/>
 
-### 壓縮時不包含某些檔案
+### 2. 壓縮時不包含某些檔案
 ex: 不包含 ./janny04369-data/xuite/album/* 與 ./janny04369-data/xuite/video/*
 ```
 tar -cvf /tmp/trully/wretch3.tar ./janny04369-data --exclude="./janny04369-data/xuite/album/*" --exclude="./janny04369-data/xuite/video/*” 
 ```
 <br/>
 
-
-
-
-
-
-
-
+### 3. 把要 tar 的名單放到 list.txt 裡
+```
+tar -T list.txt -cvf vlog.trully.2014050701.tar
+```
+```
+application/modules/default/controllers/IndexController.php
+application/modules/default/controllers/MediaController.php
+application/modules/default/controllers/TrullyController.php
+application/modules/default/models/MediaList.php
+application/modules/default/models/Medium.php
+application/modules/default/views/scripts/flash/playerrelated.phtml
+application/modules/default/views/scripts/index/_index_cat_movie.phtml
+application/modules/default/views/scripts/index/_index_promote.phtml
+application/modules/default/views/scripts/index/adv.phtml
+```
+<br/>
