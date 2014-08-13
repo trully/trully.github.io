@@ -3,7 +3,7 @@ layout: post
 title: "測試 zf, adodb 連線 pg 的記憶體使用情況"
 date: 2014-07-24 15:16:59 +0800
 comments: true
-categories: ['TECHNICAL ', 'php', 'pgsql', 'zf']
+categories: ['TECHNICAL', 'php', 'pgsql', 'zf']
 ---
 
 <!--more-->
