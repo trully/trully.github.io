@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cmd | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/cmd/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-08-13T16:33:55+08:00</updated>
+  <updated>2014-08-13T16:52:10+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[用 Tr 指令移除換行符號和取代字元]]></title>
+    <link href="http://trully.github.io/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan/"/>
+    <updated>2014-08-13T16:48:51+08:00</updated>
+    <id>http://trully.github.io/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan</id>
+    <content type="html"><![CDATA[<p>ex : 把 /tmp/log 的斷行, 取代為空白, 寫入 /tmp/log2 裡
+<code>
+tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2
+</code>
+ref : <a href="http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE">http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux 指令雜記]]></title>
@@ -166,40 +182,6 @@ MOBILES="0988222784 0911070610 0916928508 0910081920&rdquo;</p>
 
 <p>argv=$(echo ${MOBILES} | sed &ldquo;s/ /@@/g”)
 ```</p>
-
-<br/>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Grep 筆記]]></title>
-    <link href="http://trully.github.io/blog/2014/03/23/grep-bi-ji/"/>
-    <updated>2014-03-23T17:12:45+08:00</updated>
-    <id>http://trully.github.io/blog/2014/03/23/grep-bi-ji</id>
-    <content type="html"><![CDATA[<h3>grep 某 pattern 時, 帶出前或後 n 行</h3>
-
-<p>含前二行 -B 2 (B:before)
-<code>
-cat /home/logs/php/vlog_patch.log | grep -B 2 'different'
-</code>
-含後二行 -A 2 (A:after)
-<code>
-cat /home/logs/php/vlog_patch.log | grep -A 2 'different'
-</code></p>
-
-<!--more-->
-
-
-<br/>
-
-
-<h3>搜尋檔案內容</h3>
-
-<p>ex: 搜尋 getInfo 字串
-<code>
-grep -Ri getInfo * # i 表示不分大小寫
-</code></p>
 
 <br/>
 

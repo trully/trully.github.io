@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-08-13T16:33:55+08:00</updated>
+  <updated>2014-08-13T16:52:10+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Add Custom Route to VPN on Mac OS X]]></title>
+    <link href="http://trully.github.io/blog/2014/08/13/add-custom-route-to-vpn-on-mac-os-x/"/>
+    <updated>2014-08-13T16:41:26+08:00</updated>
+    <id>http://trully.github.io/blog/2014/08/13/add-custom-route-to-vpn-on-mac-os-x</id>
+    <content type="html"><![CDATA[<p>用 mac 走 adsl 收公司的信時, 因為網路的問題常會連不到</p>
+
+<p>用 vpn 回家的方式來解決<!--more--></p>
+
+<p>在播通 vpn 後, 加一個自訂的 route, 指定連到 mail server 時, 要走 ppp0</p>
+
+<p>vi /etc/ppp/ip-up
+```</p>
+
+<h1>!/bin/sh</h1>
+
+<p>/sbin/route add -net [mail server ip] -interface ppp0</p>
+
+<h1>/sbin/route add [mail server ip] 192.168.1.1</h1>
+
+<p>```
+ref : <a href="https://www.nickebo.net/adding-a-custom-route-to-a-vpn-in-mac-os-x/">https://www.nickebo.net/adding-a-custom-route-to-a-vpn-in-mac-os-x/</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux 指令雜記]]></title>

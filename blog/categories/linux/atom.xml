@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LINUX | Life is Struggle]]></title>
   <link href="http://trully.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://trully.github.io/"/>
-  <updated>2014-08-13T16:33:55+08:00</updated>
+  <updated>2014-08-13T16:52:10+08:00</updated>
   <id>http://trully.github.io/</id>
   <author>
     <name><![CDATA[trully]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[用 Tr 指令移除換行符號和取代字元]]></title>
+    <link href="http://trully.github.io/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan/"/>
+    <updated>2014-08-13T16:48:51+08:00</updated>
+    <id>http://trully.github.io/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan</id>
+    <content type="html"><![CDATA[<p>ex : 把 /tmp/log 的斷行, 取代為空白, 寫入 /tmp/log2 裡
+<code>
+tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2
+</code>
+ref : <a href="http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE">http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE</a></p>
+
+<br/>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Linux 指令雜記]]></title>
@@ -177,32 +193,6 @@ cat /home/logs/php/vlog_patch.log | grep -A 2 'different'
 <code>
 grep -Ri getInfo * # i 表示不分大小寫
 </code></p>
-
-<br/>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在 Vi 輸入 ^[ 符號]]></title>
-    <link href="http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao/"/>
-    <updated>2014-03-23T16:16:15+08:00</updated>
-    <id>http://trully.github.io/blog/2014/03/23/zai-vi-shu-ru-fu-hao</id>
-    <content type="html"><![CDATA[<p>I need to send &ldquo;^[&rdquo; command to the buffer. <br/>
-<strong>&lsquo;ctrl&rsquo; + &lsquo;v&rsquo; + &lsquo;[&rsquo;</strong> <br/>
-(with &lsquo;ctrl&rsquo; being pressed)</p>
-
-<!--more-->
-
-
-<br/>
-
-
-<p>其他相關技巧</p>
-
-<p>在 terminal 選取整列 => <strong>Shift + Command + double_click</strong></p>
-
-<p>mac 快速輸入各式特殊符號 => <strong>command + option + T </strong></p>
 
 <br/>
 

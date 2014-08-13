@@ -5,12 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Life is Struggle</title>
+  <title>Add Custom Route to VPN on Mac OS X - Life is Struggle</title>
   <meta name="author" content="trully">
 
   
-  <meta name="description" content="ex : 把 /tmp/log 的斷行, 取代為空白, 寫入 /tmp/log2 裡 1
-tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013/11/ubuntu-tr-replace- &hellip;">
+  <meta name="description" content="用 mac 走 adsl 收公司的信時, 因為網路的問題常會連不到 用 vpn 回家的方式來解決 在播通 vpn 後, 加一個自訂的 route, 指定連到 mail server 時, 要走 ppp0 vi /etc/ppp/ip-up 1
+2
+3
+#!/bin/sh
+/sbin/route &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +22,7 @@ tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://trully.github.io">
+  <link rel="canonical" href="http://trully.github.io/blog/2014/08/13/add-custom-route-to-vpn-on-mac-os-x">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life is Struggle" type="application/atom+xml">
@@ -62,60 +65,12 @@ tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan/">用 Tr 指令移除換行符號和取代字元</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-13T16:48:51+08:00" pubdate data-updated="true">Aug 13<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ex : 把 /tmp/log 的斷行, 取代為空白, 寫入 /tmp/log2 裡</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ref : <a href="http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE">http://www.arthurtoday.com/2013/11/ubuntu-tr-replace-string-new-line.html#.U9hIHo2SxyE</a></p>
-
-<br/>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/13/add-custom-route-to-vpn-on-mac-os-x/">Add Custom Route to VPN on Mac OS X</a></h1>
+      <h1 class="entry-title">Add Custom Route to VPN on Mac OS X</h1>
     
     
       <p class="meta">
@@ -138,122 +93,37 @@ tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013
   </header>
 
 
-  <div class="entry-content"><p>用 mac 走 adsl 收公司的信時, 因為網路的問題常會連不到</p>
+<div class="entry-content"><p>用 mac 走 adsl 收公司的信時, 因為網路的問題常會連不到</p>
 
-<p>用 vpn 回家的方式來解決</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/13/add-custom-route-to-vpn-on-mac-os-x/">Read on &rarr;</a>
-    </footer>
-  
+<p>用 vpn 回家的方式來解決<!--more--></p>
 
+<p>在播通 vpn 後, 加一個自訂的 route, 指定連到 mail server 時, 要走 ppp0</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">測試 Zf, Adodb 連線 Pg 的記憶體使用情況</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-24T15:16:59+08:00" pubdate data-updated="true">Jul 24<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/24/linux-zhi-ling-za-ji/">Linux 指令雜記</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-24T14:49:04+08:00" pubdate data-updated="true">Jul 24<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>1. 更新 /etc/hosts, 想要立即生效, 執行</h4>
+<p>vi /etc/ppp/ip-up</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>source /etc/hosts</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/bin/sh
+</span><span class='line'>/sbin/route add -net [mail server ip] -interface ppp0
+</span><span class='line'>#/sbin/route add [mail server ip] 192.168.1.1</span></code></pre></td></tr></table></div></figure>
 
+
+<p>ref : <a href="https://www.nickebo.net/adding-a-custom-route-to-a-vpn-in-mac-os-x/">https://www.nickebo.net/adding-a-custom-route-to-a-vpn-in-mac-os-x/</a></p>
 
 <br/>
 
-
-<h4>2. 在 mac os 刪除無回應的程式 ex:Coccinellida</h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ps -A | grep Coccinellida | awk '{print $1}' | xargs kill -9</span></code></pre></td></tr></table></div></figure>
-
-
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/07/24/linux-zhi-ling-za-ji/">Read on &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">使用 Sublime 的 Sftp</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">trully</span></span>
+
+      
 
 
 
@@ -265,32 +135,38 @@ tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013
   
 
 
-<time datetime="2014-05-30T18:05:17+08:00" pubdate data-updated="true">May 30<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
+<time datetime="2014-08-13T16:41:26+08:00" pubdate data-updated="true">Aug 13<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tool/'>TOOL</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
+  
+</span>
 
 
-  <div class="entry-content"></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/30/shi-yong-sublime-de-sftp/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
+    </p>
     
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/24/ce-shi-zf-adodb-lian-xian-pg-de-ji-yi-ti-shi-yong-kuang/" title="Previous Post: 測試 zf, adodb 連線 pg 的記憶體使用情況">&laquo; 測試 zf, adodb 連線 pg 的記憶體使用情況</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/08/13/yong-tr-zhi-ling-yi-chu-huan-xing-fu-hao-he-qu-dai-zi-yuan/" title="Next Post: 用 tr 指令移除換行符號和取代字元">用 tr 指令移除換行符號和取代字元 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -352,6 +228,7 @@ tr "\r\n" " " &lt; /tmp/log &gt; /tmp/log2 ref : http://www.arthurtoday.com/2013
 
   
 </aside>
+
 
     </div>
   </div>
